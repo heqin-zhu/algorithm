@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : heapSort.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-07-05  16:24
+# Description:
+#########################################################################
+'''
+
 from functools import partial
 class heap:
     def __init__(self,lst,reverse = False):

@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : winnerTree.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-05-19  23:06
+# Description:
+#########################################################################
+'''
+
 class winnerTree:
     '''if i<lowExt    p = (i+offset)//2
        else           p = (i+n-1-lowExt)//2

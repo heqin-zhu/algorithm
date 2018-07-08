@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : hashTable.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-07-08  16:39
+# Description:
+#########################################################################
+'''
+
 class item:
     def __init__(self,key,val,nextItem=None):
         self.key = key

@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : directed.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-04-26  10:33
+# Description:
+#########################################################################
+'''
+
 from collections import Iterable,deque
 class vertex:
     def __init__(self,mark,val=None ,firstEdge = None):
@@ -217,7 +229,8 @@ if __name__=='__main__':
     g.display()
     g.visitPath(3,6)
 
-    '''
+ 
+   '''
     '''
     vertexs
     v1  to:['v4']

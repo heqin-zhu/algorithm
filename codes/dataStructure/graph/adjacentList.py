@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : adjacentList.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-04-26  10:33
+# Description:
+#########################################################################
+'''
+
 from collections import Iterable,deque
 class vertex:
     def __init__(self,mark,firstEdge=None,val=None):

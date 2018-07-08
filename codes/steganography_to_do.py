@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : steganography_to_do.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-07-06  15:57
+# Description:
+#########################################################################
+'''
+
 from PIL import Image
 from skimage import color
 import numpy as np

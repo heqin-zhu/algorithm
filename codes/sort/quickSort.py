@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : quickSort.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-07-06  10:31
+# Description:
+#########################################################################
+'''
+
 def quickSort(lst):
     '''A optimized version of Hoare partition'''
     def partition(a,b):

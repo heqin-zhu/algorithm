@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : directed.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-04-25  22:28
+# Description:
+#########################################################################
+'''
+
 from collections import deque
 class vertex:
     def __init__(self,mark,val=None ,firstEdge = None):

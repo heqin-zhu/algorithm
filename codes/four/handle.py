@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : handle.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-07-06  22:45
+# Description:
+#########################################################################
+'''
+
 from pickle import load,dump
 from random import randint
 

@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : trie.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-05-19  23:06
+# Description:
+#########################################################################
+'''
+
 class node:
     def __init__(self,val = None):
         self.val = val

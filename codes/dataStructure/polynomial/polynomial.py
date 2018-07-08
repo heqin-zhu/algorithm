@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : polynomial.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-05-19  23:07
+# Description:
+#########################################################################
+'''
+
 #!/bin/python3
 # notice that  creating   a class's initialization won't conflict with __call__ method 
 # because the former  call class ,and the latter  call instance

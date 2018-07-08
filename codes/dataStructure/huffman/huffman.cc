@@ -1,3 +1,15 @@
+/* mbinary
+#########################################################################
+# File : huffman.cc
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-04-25  22:32
+# Description:
+#########################################################################
+*/
+
 #include<math.h>
 #include<stdio.h>
 #include<direct.h>
@@ -333,7 +345,7 @@ int main(int argv,char ** argc)
     char cwd[50];
     cout<<getcwd(cwd,50)<<endl;
     string file1("GitHubDesktopSetup.exe");
-    string file("³õÐÄÎ´¸Ä.mp4");
+    string file("Î´.mp4");
     vector<string> names;
     if(argv>1){
         for(int i=1;i<argv;++i){
