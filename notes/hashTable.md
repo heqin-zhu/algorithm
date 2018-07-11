@@ -28,7 +28,7 @@ description:
 
 <!-- /TOC -->
 
-**[github地址](https://github.com/mbinary/algorithm-and-data-struture.git)**
+**[github地址](https://github.com/mbinary/algorithm-and-data-structure.git)**
 
 哈希表 (hash table) , 可以实现 $O(1)$ 的 read, write, update
 相对应 python 中的 dict, c语言中的 map

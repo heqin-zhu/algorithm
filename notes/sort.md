@@ -36,7 +36,7 @@ description:
 
 <!-- /TOC -->
 
-**[github地址](https://github.com/mbinary/algorithm-and-data-struture.git)**
+**[github地址](https://github.com/mbinary/algorithm-and-data-structure.git)**
 
 排序的本质就是减少逆序数, 根据是否进行比较,可以分为如下两类.
 * 比较排序

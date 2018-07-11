@@ -35,7 +35,7 @@ description:
 
 <!-- /TOC -->
 
-**[github地址](https://github.com/mbinary/algorithm-and-data-struture.git)**
+**[github地址](https://github.com/mbinary/algorithm-and-data-structure.git)**
 <a id="markdown-1-概念" name="1-概念"></a>
 # 1. 概念
 * 双亲
@@ -177,22 +177,6 @@ Aho-Corasick automation,是在字典树上添加匹配失败边(失配指针), �
 >![](https://upload-images.jianshu.io/upload_images/7130568-85329df49fa54685.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-
-在每一步中，算法先查找当前节点的 “孩子节点”，如果没有找到匹配，查找它的后缀节点(suffix) 的孩子，如果仍然没有，接着查找后缀节点的后缀节点的孩子, 如此循环, 直到根结点，如果到达根节点仍没有找到匹配则结束。
-
-当算法查找到一个节点，则输出所有结束在当前位置的字典项。输出步骤为首先找到该节点的字典后缀，然后用递归的方式一直执行到节点没有字典前缀为止。同时，如果该节点为一个字典节点，则输出该节点本身。
-
-输入 abccab 后算法的执行步骤如下：
-
-输入字符串的分析 abccab
-节点	剩余字符串	输出：结束位置	过渡	输出
-()	abccab	 	从根开始	
-(a)	bccab	a:1	()→子节点 (a)	当前节点
-(ab)	ccab	ab:2	(a)→子节点 (ab)	当前节点
-(bc)	cab	bc:3, c:3	(ab)→后缀节点 (b)→子节点 (bc)	当前节点，字典后缀
-(c)	ab	c:4	(bc)→后缀节点 (c)→后缀节点 ()→子节点 (c)	当前节点
-(ca)	b	a:5	(c)→(ca)	字典后缀
-(ab)		ab:6	(ca)→后缀节点 (a)→子节点 (ab)	当前节点
 <a id="markdown-5-平衡二叉树" name="5-平衡二叉树"></a>
 # 5. 平衡二叉树
 上面的二叉查找树不平衡,即经过多次插入,删除后,  其高度变化大, 不能保持$\Theta(n)$的性能
