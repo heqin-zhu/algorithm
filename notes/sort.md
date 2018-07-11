@@ -2,12 +2,11 @@
 title: 『算法』排序
 date: 2018-7-6
 categories: 算法与数据结构
-tags: [算法.排序]
+tags: [算法,排序]
 keywords:  
-mathjax: false
+mathjax: true
 description: 
 ---
-
 <!-- TOC -->
 
 - [1. 希尔排序(shellSort)](#1-希尔排序shellsort)
@@ -32,9 +31,12 @@ description:
     - [5.2. 实现](#52-实现)
     - [5.3. 扩展](#53-扩展)
     - [5.4. 测试](#54-测试)
+- [6. 桶排序(bucketSort)](#6-桶排序bucketsort)
+- [7. 选择问题(select)](#7-选择问题select)
 
 <!-- /TOC -->
-**[github地址](https://github.com/mbinary/algorithm.git)**
+
+**[github地址](https://github.com/mbinary/algorithm-and-data-struture.git)**
 
 排序的本质就是减少逆序数, 根据是否进行比较,可以分为如下两类.
 * 比较排序
@@ -73,7 +75,7 @@ def shellSort(s,inc = None):
 则 总比较次数为 
 $$
 \begin{aligned}
-\sum_{h=1}^{\lfloor{log_2 n}\rfloor} O(h)\lceil 2^{h} \rceil  & = \sum_{h=0}^{{log_2 n}-1} O(h\frac{n}{2^h})\\
+\sum_{h=1}^{\lfloor{log_2 n}\rfloor} O(h)\lceil 2^{h} \rceil  & = \sum_{h=0}^{ {log_2 n}-1} O(h\frac{n}{2^h})\\
                                                           & = n*O(\sum_{h=0}^{log_2 n}\frac{h}{2^h}) \\    
                                                           & = n*O(1)   \\
                                                           & = O(n)  
@@ -89,9 +91,86 @@ $$
 然后对那个孩子进行同样的操作,一直到达堆底,即最下面的一层. 这个过程称为 下滤.
 最后将最后一个元素与最下面一层那个元素(与上一层交换的)交换, 再删除最后一个元素.
 时间复杂度为 $O(logn)$
-<a id="markdown-24-堆排序" name="24-堆排序"></a>
+<a id="markdown-24-堆排序" namie="24-堆排序"></a>
 ## 2.4. 堆排序
 建立堆之后, 一直进行 `取出最元`操作, 即得有序序列
+
+
+代码
+```python
+from functools import partial
+class heap:
+    def __init__(self,lst,reverse = False):
+        self.data= heapify(lst,reverse)
+        self.cmp = partial(lambda i,j,r:cmp(self.data[i],self.data[j],r),r=  reverse)
+    def getTop(self):
+        return self.data[0]
+    def __getitem__(self,idx):
+        return self.data[idx]
+    def __bool__(self):
+        return self.data != []
+    def popTop(self):
+        ret = self.data[0]
+        n = len(self.data)
+        cur = 1
+        while cur * 2<=n:
+            chd = cur-1
+            r_idx = cur*2
+            l_idx = r_idx-1
+            if r_idx==n:
+                self.data[chd] = self.data[l_idx]
+                break
+            j = l_idx if self.cmp(l_idx,r_idx)<0 else r_idx
+            self.data[chd] = self.data[j]
+            cur = j+1
+        self.data[cur-1] = self.data[-1]
+        self.data.pop()
+        return ret
+
+    def addNode(self,val):
+        self.data.append(val)
+        self.data = one_heapify(len(self.data)-1)
+
+
+def cmp(n1,n2,reverse=False):
+    fac = -1 if reverse else 1
+    if n1 < n2: return -fac
+    elif n1 > n2: return fac
+    return 0
+
+def heapify(lst,reverse = False):
+    for i in range(len(lst)):
+        lst = one_heapify(lst,i,reverse)
+    return lst
+def one_heapify(lst,cur,reverse = False):
+    cur +=1
+    while cur>1:
+        chd = cur-1
+        prt = cur//2-1
+        if cmp(lst[prt],lst[chd],reverse)<0:
+            break
+        lst[prt],lst[chd] = lst[chd], lst[prt]
+        cur = prt+1
+    return lst
+def heapSort(lst,reverse = False):
+    lst = lst.copy()
+    hp = heap(lst,reverse)
+    ret = []
+    while hp:
+        ret.append(hp.popTop())
+    return ret
+
+
+if __name__ == '__main__':
+    from random import randint
+    n = randint(10,20)
+    lst = [randint(0,100) for i in range(n)]
+    print('random    : ', lst)
+    print('small-heap: ', heapify(lst))
+    print('big-heap  : ', heapify(lst,True))
+    print('ascend    : ', heapSort(lst))
+    print('descend   : ', heapSort(lst,True))
+```
 <a id="markdown-3-快速排序quicksort" name="3-快速排序quicksort"></a>
 # 3. 快速排序(quickSort)
 ```python
@@ -112,7 +191,6 @@ def quickSort(lst):
 ## 3.1. partition的实现
 partition 有不同的实现. 下面列出两种
 * 第一种实现
-
 ```python
 def partition(a,b):
     pivot = lst[a]
@@ -140,9 +218,39 @@ def partition(a,b):
     lst[j+1],lst[b] = lst[b],lst[j+1]
     return j+1
 ```
+
 第二种是算法导论上的,可以发现,第二种交换赋值的次数比第一种要多,而且如果序列的逆序数较大,第二种一次交换减少的逆序数很少, 而第一种就比较多(交换的两个元素相距较远)
 然后我用随机数测试了一下, 确实是第一种较快, 特别是要排序的序列较长时,如在 5000 个元素时, 第一种要比第二种快几倍, Amazing!
 
+完整代码
+```python 
+def quickSort(lst):
+    '''A optimized version of Hoare partition'''
+    def partition(a,b):
+        pivot = lst[a]
+        while a!=b:
+            while a<b and lst[b]>pivot: b-=1
+            if a<b:
+                lst[a] = lst[b]
+                a+=1
+            while a<b and lst[a]<pivot: a+=1
+            if a<b:
+                lst[b] = lst[a]
+                b-=1
+        lst[a] = pivot
+        return a
+    def  _sort(a,b):
+        if a>=b:return 
+        mid = (a+b)//2
+        # 三数取中值置于第一个作为 pivot
+        if (lst[a]<lst[mid]) ^ (lst[b]<lst[mid]): lst[a],lst[mid] = lst[mid],lst[a]  # lst[mid] 为中值
+        if (lst[a]<lst[b]) ^ (lst[b]>lst[mid]): lst[a],lst[b] = lst[b],lst[a] # lst[b] 为中值
+        i = partition(a,b)
+        _sort(a,i-1)
+        _sort(i+1,b)
+    _sort(0,len(lst)-1)
+    return lst
+```
 <a id="markdown-32-选择枢纽元" name="32-选择枢纽元"></a>
 ## 3.2. 选择枢纽元
 * 端点或中点
@@ -293,10 +401,11 @@ if __name__ == '__main__':
     timer([quickSort,radixSort],1000000000,100000)
     timer([quickSort,radixSort],1000000000000,10000)
     timer([quickSort,radixSort],10000,100000)
- ```
+```
 ![radixSort vs quickSort](https://upload-images.jianshu.io/upload_images/7130568-60e532a24fa09883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-# 桶排序(bucketSort)
+<a id="markdown-6-桶排序bucketsort" name="6-桶排序bucketsort"></a>
+# 6. 桶排序(bucketSort)
 适用于均匀分布的序列
 
 设有 n 个元素, 则设立 n 个桶
@@ -322,7 +431,10 @@ E(\sum_{i=1}^{n}n_i^2) &=\sum_{i=1}^{n}E(n_i^2)   \\
 $$
 将以上各部分加起来即得时间复杂度 $\Theta(n)$
 
-# 选择问题(select)
+
+
+<a id="markdown-7-选择问题select" name="7-选择问题select"></a>
+# 7. 选择问题(select)
 输入个序列 lst, 以及一个数 i, 输出 lst 中 第 i 小的数,即从小到大排列第 i
 
 解决方法
