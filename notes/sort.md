@@ -1,7 +1,7 @@
 ---
 title: 『算法』排序
 date: 2018-7-6
-categories: 算法与数据结构
+categories: 数据结构与算法
 tags: [算法,排序]
 keywords:  
 mathjax: true
@@ -36,7 +36,6 @@ description:
 
 <!-- /TOC -->
 
-**[github地址](https://github.com/mbinary/algorithm-and-data-structure.git)**
 
 排序的本质就是减少逆序数, 根据是否进行比较,可以分为如下两类.
 * 比较排序
@@ -411,7 +410,7 @@ if __name__ == '__main__':
 设有 n 个元素, 则设立 n 个桶
 将各元素通过数值线性映射到桶地址,
 类似 hash 链表.
-然后在每个桶内, 进行插入排序,
+然后在每个桶内, 进行插入排序($O(n_i^2)$)
 最后合并所有桶.
 这里的特点是 n 个桶实现了 $\Theta(n)$的时间复杂度, 但是耗费的空间 为 $\Theta(n)$
 
@@ -474,3 +473,4 @@ def select(lst,i):
     return _select(0,len(lst)-1)
 ```
 
+**[github地址](https://github.com/mbinary/algorithm-and-data-structure.git)**

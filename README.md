@@ -1,13 +1,19 @@
-# 算法笔记
-记录学习算法的一些笔记, 想法, 以及代码实现 :smiley:
+# Algorithm and data structures
+>Notes and codes for learning algorithm and data structures :smiley:
 
-目前正在看`<<算法导论>>`
+Some pictures and idead are from `<<Introduction to Algotithm>>
 
+I use python 3.6+ and c++ to implements them.
+Since I used f-Strings in python, you may use python 3.6+ to run the following python scripts.
 
-> 目前 github 上的文档不支持 latex 数学公式渲染
-所以如果要读下面的一些笔记(md文件), 可以移步到[我的博客](https://mbinary.coding.me)
+>>I am still learning new things and this repo is always updating.
+Some scripts may have bugs or not be finished yet.
 
-# 索引
+# Notice
+Currently, Github can't render latex math formulas.
+So,if you wannt to view the notes which contains latex math formulas and are in markdown format, you can visit [my blog](https://mbinary.coding.me)
+
+# index
 * [.](.)
     * [notes](./notes)
         * [alg-general.md](./notes/alg-general.md)

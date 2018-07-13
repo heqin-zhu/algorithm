@@ -1,7 +1,7 @@
 ---
 title: 『数据结构』散列表
 date: 2018-07-08  23:25
-categories: 算法与数据结构
+categories: 数据结构与算法
 tags: [数据结构,散列表]
 keywords:  
 mathjax: true
@@ -28,7 +28,6 @@ description:
 
 <!-- /TOC -->
 
-**[github地址](https://github.com/mbinary/algorithm-and-data-structure.git)**
 
 哈希表 (hash table) , 可以实现 $O(1)$ 的 read, write, update
 相对应 python 中的 dict, c语言中的 map
@@ -115,9 +114,9 @@ $$
 对于 m 个槽位的表, 只需 $\Theta(n)$的期望时间来处理 n 个元素的 insert, search, delete,其中  有$O(m)$个insert 操作
 <a id="markdown-2313-实现" name="2313-实现"></a>
 #### 2.3.1.3. 实现
-选择足够大的 prime p, 记$Z_p=\{0,1,\ldots,p-1\}, Z_p^*=\{1,\ldots,p-1\},$
+选择足够大的 prime p, 记$Z_p=\{0,1,\ldots,p-1\}, Z_p^{*}=\{1,\ldots,p-1\},$
 令$h_{a,b}(k) = ((ak+b)mod\ p) mod\ m$
-则 $H_{p,m}=\{h_{a,b}|a\in Z_p^*,b\in Z_p\}$
+则 $H_{p,m}=\{h_{a,b}|a\in Z_p^{*},b\in Z_p\}$
 <a id="markdown-24-开放寻址法" name="24-开放寻址法"></a>
 ## 2.4. 开放寻址法
 所有表项都在散列表中, 没有链表.
@@ -141,9 +140,16 @@ $h(k,i) = (h_1(k)+i*h_2(k))mod\ m$
 
 <a id="markdown-241-不成功查找的探查数的期望" name="241-不成功查找的探查数的期望"></a>
 ### 2.4.1. 不成功查找的探查数的期望
-对于开放寻址散列表,且 $\alpha<1$,在一次不成功的查找中,有 $E(\text{探查数})\leqslant \frac{1}{1-\alpha}$
-不成功探查是这样的: 前面都是检查到槽被占用但是关键字不同, 最后一次应该是空槽.
+对于开放寻址散列表,且 $\alpha<1$,一次不成功的查找,是这样的: 已经装填了 n 个, 总共有m 个,则空槽有 m-n 个. 
+不成功的探查是这样的: 一直探查到已经装填的元素(但是不是要找的元素),  直到遇到没有装填的空槽. 所以这服从几何分布, 即
+$$
+p(\text{不成功探查})=p(\text{第一次找到空槽})=\frac{m-n}{m}
+$$
+ 有
+ $$ E(\text{探查数})=\frac{1}{p}\leqslant \frac{1}{1-\alpha}$$
+
 ![](https://upload-images.jianshu.io/upload_images/7130568-8d659aa8fe7de1a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 <a id="markdown-2411-插入探查数的期望" name="2411-插入探查数的期望"></a>
 #### 2.4.1.1. 插入探查数的期望
 所以, 插入一个关键字, 也最多需要 $\frac{1}{1-\alpha}$次, 因为插入过程就是前面都是被占用了的槽, 最后遇到一个空槽.与探查不成功是一样的过程
@@ -162,6 +168,8 @@ $$
 $$
 
 代码
+
+**[github地址](https://github.com/mbinary/algorithm-and-data-structure.git)**
 ```python
 class item:
     def __init__(self,key,val,nextItem=None):
