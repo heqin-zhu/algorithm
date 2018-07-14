@@ -6,6 +6,8 @@ tags: [数据结构,红黑树]
 keywords:  
 mathjax: true
 description: 
+---
+
 <!-- TOC -->
 
 - [1. 定义与性质](#1-定义与性质)
@@ -365,7 +367,11 @@ def find(root,i):
 
 **[github地址](https://github.com/mbinary/algorithm-and-data-structure.git)**
 
-我用了 setChild, getChild 来简化代码量, 其他的基本上是按照算法导论上的伪代码提到的case 来实现的. 然后display 只是测试的时候,为了方便调试而层序遍历打印出来
+我的代码有两点不同
+* 用了 setChild, getChild 来简化代码量
+* 每个结点没有上面的 p 域, 即指向 nil leaf的,我直接让 left, right 为 `None`, 然后定义了两个函数 `setBlack`, `checkBlack` 来操作 颜色数据 isBlack(当为 True 时代表黑色,否则为红). 如果为 None, 这两个函数也能正确的处理.可以直接见代码
+
+其他的基本上是按照算法导论上的伪代码提到的case 来实现的. 然后display 只是测试的时候,为了方便调试而层序遍历打印出来 
 
 效果如下
 ![](https://upload-images.jianshu.io/upload_images/7130568-721e18cc44dec604.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
