@@ -166,8 +166,5 @@ def menu():
     print('10.menu')
     print('11.exit')
 
-def go():
-    menu()
-    
 if __name__ == '__main__':
-    go()
+    pass

@@ -10,6 +10,7 @@
 #########################################################################
 '''
 
+from winnerTree import winnerTree
 class loserTree:
     '''if i<=lowExt    p = (i+offset)//2
        else           p = (i+n-1-lowExt)//2

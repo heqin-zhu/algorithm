@@ -10,12 +10,20 @@
 #########################################################################
 */
 
-#include<stdio.h>
-#include<string.h>
-#include<math.h>
+#include<cstdlib> 
+#include<cstdio>
+#include<cstring>
+#include<cmath>
 #include<malloc.h>
 #include<map>
 using namespace std;
+
+#if defined(__linux__)
+    #define LINUX true 
+#elif defined(_WIN32)
+    #define LINUX false
+#endif
+
 
 bool  isZero(double a)
 {
@@ -295,7 +303,8 @@ void loop()
                 menu();
             }
             else if(op == 6){
-                system("cls");
+                if(LINUX) system("clear");
+                else system("cls");
                 menu();
             }
             else if(op == 10){

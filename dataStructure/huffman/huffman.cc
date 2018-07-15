@@ -5,22 +5,22 @@
 # Mail: zhuheqin1@gmail.com
 # Blog: https://mbinary.coding.me
 # Github: https://github.com/mbinary
-# Created Time: 2018-05-19  23:06
+# Created Time: 2018-04-25  22:32
 # Description:
 #########################################################################
 */
 
 #include<math.h>
 #include<stdio.h>
-#include<direct.h>
 #include<iostream>
 #include<algorithm>
 #include<map>
-#include<windows.h>
+#include<unistd.h>
 #include<iomanip>
 #include<string>
 #include<vector>
 #include<queue>
+#include<sys/time.h>
 #define numDigit 10
 #define nameLength 50
 #define  starNum  80
@@ -53,7 +53,7 @@ string uniFileName(string file)
         while(true){
             char s[3];
             n+=1;
-            itoa(n,s,10);
+            snprintf(s,3,"%d",n); 
             file=(name+"("+s+")"+suffix);
             FILE* f=fopen(file.c_str(),"rb");
             if(!f)break;
@@ -223,7 +223,7 @@ string huffman<ky,wt>::encode(string file_name,long &charNum)
     }
     int data_size = data.size();  // calculate the size of the code_data
     char sz[numDigit];
-    itoa(data_size,sz,numDigit);
+    snprintf(sz,numDigit,"%d",data_size); 
     int ct=0;
     for(;sz[ct];++ct)fputc(sz[ct],dst);
     fputc('\n',dst);
@@ -322,32 +322,32 @@ void go(vector<string> & names)
     vector<bool> indicator;
     bool bl;
     for(vector<string>::iterator i=names.begin();i!=names.end();++i){
-        last=GetTickCount();
+        struct timeval tv;
+        gettimeofday(&tv,NULL);
+        last=tv.tv_sec;
         bl=handle_one(*i,originSize,compressedSize);
         indicator.push_back(bl);
-        deltaTime.push_back(GetTickCount()-last);
+        gettimeofday(&tv,NULL);
+        deltaTime.push_back(tv.tv_sec-last);
     }
-    cout<<"\ndealt file number  "<<originSize.size()<<fixed<<setprecision(2)<<endl;
+    cout<<"\nDealt file number  "<<originSize.size()<<fixed<<setprecision(2)<<endl;
     vector<string>::iterator p=max_element(names.begin(),names.end(),lenStr);
     int len = p->size()+2;
     for(int i =0;i<names.size();++i){
         if(! indicator[i]){continue;}
         cout<<names[i]<<string(len-names[i].size(),' ');
-        cout<<deltaTime[i]<<"ms  "<<compressedSize[i]/1024.0<<"KB/"<<originSize[i]/1024.0<<"KB :";
+        cout<<deltaTime[i]<<"s  "<<compressedSize[i]/1024.0<<"KB/"<<originSize[i]/1024.0<<"KB :";
         cout<<compressedSize[i]*100.0/originSize[i]<<"%"<<endl;
     }
     cout<<endl;
     system("pause");
-    system("pause");
 }
 int main(int argv,char ** argc)
 {
-    _chdir("C:\\Users\\mbinary\\Desktop\\dataStructrue\\huffman");
     char cwd[50];
     cout<<getcwd(cwd,50)<<endl;
-    string file1("GitHubDesktopSetup.exe");
-    string file("δ.mp4");
     vector<string> names;
+    string file; 
     if(argv>1){
         for(int i=1;i<argv;++i){
             names.push_back(argc[i]);
@@ -358,8 +358,7 @@ int main(int argv,char ** argc)
     char mk;
     while(1){
         char s[201];
-        cout<<"input file names separated by space "<<endl;
-        cout<<"OR press enter to use the default file:"<<file<<endl;
+        cout<<"Input file names separated by space "<<endl;
         if(cin.peek()=='\n')names.push_back(file);
         else {
             cin.getline(s,200);
@@ -367,7 +366,7 @@ int main(int argv,char ** argc)
         }
         cout<<endl;
         go(names);
-        cout<<"continue to compress or uncompress files?  [Y/n]:"<<flush;
+        cout<<"Continue?  [Y/n]:"<<flush;
         mk= cin.get();
         if(mk=='n')break;
         names.clear();

@@ -102,11 +102,52 @@ def getPath(s,index):
         if ct is 0:
             return cur.path
         cur.move()
+def info():
+    print('input a 3x3 matrix in one line')
+    print('from left to right,from up to down') 
+    print('such as 56831247x  represent matrix as follow')
+    print('5  6  8\n3  1  2\n4  7  x')
+    print('then, if it has, I will print the path of moving x to reach state as follows')
+    print('1  2  3\n4  5  6\n7  8  x')
+    print('print q to quit')
+
+from random import shuffle
+case = list('12345678x')
+def genCase():
+    tmp = case.copy()
+    shuffle(tmp)
+    print(f'Using random data: {tmp}')
+    index = -1
+    for i,j in enumerate(tmp):
+        if j=='x':
+            index = i
+            break
+    tmp[index] = '9'
+    return tmp,index
+def isValid(li):
+    for i in '123456789':
+        if not i in li:
+            print('Invalid Input')
+            return False
+    return True
+
+def run():
+    while 1:
+        print('\n\n'+'-'*10+'Game Begins'+ '-'*10)
+        info()
+        s=input('input: ') 
+        if s=='q' or s=='Q' or s=='quit':
+            break
+        index = s.find('x')
+        li = list(s)
+        if index != -1:
+            li[index] = '9'
+        if not isValid(li):
+            li, index = genCase()
+        if solvable(li):
+            print(''.join(getPath(li,index)))
+        else:print('unsolvable')
+
 
 if __name__ == '__main__':
-    s=input()
-    index = s.find('x')
-    s =list(s)
-    s[index] = '9'
-    if solvable(s):print(''.join(getPath(s,index)))
-    else:print('unsolvable')
+    run()
