@@ -7,7 +7,6 @@ I use python 3.6+ and c++ to implements them.
 Since I used f-Strings in python, you may use python 3.6+ to run the following python scripts.
 
 >>I am still learning new things and this repo is always updating.
-Some scripts may have bugs or not be finished yet.
 
 # Notice
 Currently, Github can't render latex math formulas.

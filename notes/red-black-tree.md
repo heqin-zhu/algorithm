@@ -47,6 +47,7 @@ description:
 * right:pointer to right child
 * p: pointer to nil leaf
 
+
 <a id="markdown-12-红黑性质" name="12-红黑性质"></a>
 ## 1.2. 红黑性质
 满足下面的 `红黑性质` 的二叉查找树就是红黑树:
@@ -55,6 +56,7 @@ description:
 * nil leaf 是 黑
 * 红结点的孩子是黑
 * 从每个结点出发,通过子孙到达叶子结点的各条路径上 黑结点数相等
+
 
 如,叶子结点 是 nil, 即不存储任何东西, 为了编程方便,相对的,存有数据的结点称为内结点
 ![](https://upload-images.jianshu.io/upload_images/7130568-95927d3ca6cc524d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -96,6 +98,7 @@ $$n \geqslant 2^{h_b(x)} -1 \geqslant 2^{\frac{h}{2}} -1$$
 * 先同二叉查找树那样插入, 做为叶子(不为空)
 * 然后将新结点的 左右孩子设为 nil , 颜色设为红色
 * 最后再进行颜色调整以及旋转(维持红黑性质)
+
 
 这是算法导论[^1]上的算法
 ```python
@@ -284,9 +287,11 @@ color[root[T]] ← BLACK
 
 * 当 z 孩子全是 nil (y==z): 直接让其双亲对应的孩子为 nil
 * 当 z 只有一个非 nil 孩子 x  (y==z): 
+
     1. 如果 z 为根, 则让 x 为根.   
     2. 让 y 的双亲连接到 x
 * 当 z 有两个非nil孩子(y!=z): 复制其后继 y 的内容到 z (除了指针,颜色) ,  将其后继 y 的孩子(最多只有一个 非 nil ,不然就不是后继了)连接到其后继的双亲, 删除 其后继y, 
+
 
 即[^3]  如果要删除有两个孩子的结点 z , 则找到它的后继y(前趋同理), 可以推断 y 一定没有左孩子, 右孩子可能有,可能没有. 也就是最多一个孩子.
 所以将 y 的值复制到 x 位置, 现在相当于删除 y 处的结点.
@@ -316,6 +321,7 @@ color[root[T]] ← BLACK
 * x 指向根,这时可以简单地消除额外的黑色
 * 颜色修改与旋转
 
+
 在 while 中, x 总是指向具有双重黑色的那个非根结点, 在第 2 行中要判断 x 是其双亲的左右孩子
 w 表示 x 的相抵. w 不能为 nil(因为 x 是双重黑色)
 
@@ -324,11 +330,14 @@ w 表示 x 的相抵. w 不能为 nil(因为 x 是双重黑色)
 
 即
 * x 的兄弟 w 是红色的
+
 ![](https://upload-images.jianshu.io/upload_images/7130568-cd139202bdc5406f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * x 的兄弟 w 是黑色的, w的两个孩子都是黑色的
 
+
 * x 的兄弟 w 是黑色的, w 的左孩子是红,右孩子是黑
 * x 的兄弟 w 是黑色的, w 的孩子是红色的
+
 
 >>注意上面都是先考虑的左边, 右边可以对称地处理.
 
@@ -370,6 +379,7 @@ def find(root,i):
 我的代码有两点不同
 * 用了 setChild, getChild 来简化代码量
 * 每个结点没有上面的 p 域, 即指向 nil leaf的,我直接让 left, right 为 `None`, 然后定义了两个函数 `setBlack`, `checkBlack` 来操作 颜色数据 isBlack(当为 True 时代表黑色,否则为红). 如果为 None, 这两个函数也能正确的处理.可以直接见代码
+
 
 其他的基本上是按照算法导论上的伪代码提到的case 来实现的. 然后display 只是测试的时候,为了方便调试而层序遍历打印出来 
 

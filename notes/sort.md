@@ -39,10 +39,12 @@ description:
 
 排序的本质就是减少逆序数, 根据是否进行比较,可以分为如下两类.
 * 比较排序
+
 如希尔排序,堆排序, 快速排序, 合并排序等
 可以证明 比较排序的下界 是 $\Omega(nlogn)$
 
 * 非比较排序
+
 如 计数排序, 桶排序, 基数排序 不依靠比较来进行排序的, 可以达到 线性时间的复杂度
 
 
@@ -190,6 +192,7 @@ def quickSort(lst):
 ## 3.1. partition的实现
 partition 有不同的实现. 下面列出两种
 * 第一种实现
+
 ```python
 def partition(a,b):
     pivot = lst[a]
@@ -206,6 +209,7 @@ def partition(a,b):
     return a
 ```
 * 第二种实现
+
 ```python
 def partition(a,b):
     pivot = lst[b]
@@ -256,6 +260,7 @@ def quickSort(lst):
 * 随机
 * 三数取中(两端点以及中点)
 * 五数取中
+
 
 <a id="markdown-33-快速排序的性能" name="33-快速排序的性能"></a>
 ## 3.3. 快速排序的性能
@@ -419,6 +424,7 @@ if __name__ == '__main__':
 * 桶合并部分: $\Theta(n)$
 * 桶内插入排序部分: 设每个桶内的元素数为随机变量 $n_i$, 易知 $n_i \sim  B(n,\frac{1}{n})$ 记 $p=\frac{1}{n}$
 
+
 $$
 \begin{aligned}
 E(\sum_{i=1}^{n}n_i^2) &=\sum_{i=1}^{n}E(n_i^2)   \\
@@ -439,8 +445,10 @@ $$
 解决方法
 * 全部排序, 取第 i 个, $O(nlogn)$
 * 长度为 i 的队列(这是得到 lst 中 前
+
 i 个元素的方法) 仍然 $O(nlogn)$
 * randomized-select(仿造快排) 平均情况$O(n)$,最坏情况同上(快排), $\Theta(n^2)$
+
 ```python
 from random import randint
 def select(lst,i):

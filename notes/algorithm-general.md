@@ -1,6 +1,5 @@
 ---
-title: 『算法』general
-date: 2018-07-04
+title: 『算法』概述
 categories: 数据结构与算法
 tags: [算法]
 keywords: 
@@ -34,6 +33,10 @@ top:
 - [8. 概率分析与指示器变量例子](#8-概率分析与指示器变量例子)
     - [8.1. 球与盒子](#81-球与盒子)
     - [8.2. 序列](#82-序列)
+- [9. 摊还分析](#9-摊还分析)
+    - [9.1. 聚合分析(aggregate analysis)](#91-聚合分析aggregate-analysis)
+    - [9.2. 核算法 (accounting method)](#92-核算法-accounting-method)
+    - [9.3. 势能法(potential method)](#93-势能法potential-method)
 
 <!-- /TOC -->
 
@@ -49,6 +52,7 @@ top:
 * 资源分配,最大效益
 * ...
 
+
 <a id="markdown-3-算法分析" name="3-算法分析"></a>
 # 3. 算法分析
 衡量算法的优劣
@@ -60,19 +64,14 @@ top:
 * 增长的量级$ O(1),O(logn), O(n), O(n^k), O(a^n) $
 
 
+
 <a id="markdown-4-算法设计" name="4-算法设计"></a>
-# 4. 算法设计与分析
+# 4. 算法设计
 <a id="markdown-41-分治divide-and-conquer" name="41-分治divide-and-conquer"></a>
 ## 4.1. 分治(divide and conquer)
 结构上是递归的,
 步骤: 分解,解决, 合并
 eg 快排,归并排序
-
-## 随机化
-## 递归
-## 动态规划
-## 贪心算法
-## 平摊分析
 
 <a id="markdown-5-递归式" name="5-递归式"></a>
 # 5. 递归式
@@ -84,6 +83,7 @@ eg 快排,归并排序
 ### 5.1.1. 步骤
 * 猜测解的形式
 * 用数学归纳法找出常数
+
 
 <a id="markdown-512-例子" name="512-例子"></a>
 ### 5.1.2. 例子
@@ -152,6 +152,7 @@ $$
 * 决定上式的渐近界
 * 结合前两点
 
+
 <a id="markdown-5322-分析扩展至所有正整数-n-都成立" name="5322-分析扩展至所有正整数-n-都成立"></a>
 #### 5.3.2.2. 分析扩展至所有正整数 n 都成立
 主要是应用数学技巧来解决 floor, ceiling 函数的处理问题
@@ -192,6 +193,7 @@ for i in range(n):
 * 对于 $C_n^x=a$, 有 $x=\frac{ln^2 a}{n}$
 * 对于 $C_x^n=a$, 有 $x=(a*n!)^{\frac{1}{n}}+\frac{n}{2}$
 
+
 <a id="markdown-8-概率分析与指示器变量例子" name="8-概率分析与指示器变量例子"></a>
 # 8. 概率分析与指示器变量例子
 <a id="markdown-81-球与盒子" name="81-球与盒子"></a>
@@ -219,4 +221,64 @@ $P(A_{ik})=\frac{1}{2^k}$,对于 $k=2\lceil lgn\rceil$
 ![coin3.jpg](https://upload-images.jianshu.io/upload_images/7130568-f104d530f2a57c99.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![coin4.jpg](https://upload-images.jianshu.io/upload_images/7130568-be0fd1b57a5ff305.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+<a id="markdown-9-摊还分析" name="9-摊还分析"></a>
+# 9. 摊还分析
+<a id="markdown-91-聚合分析aggregate-analysis" name="91-聚合分析aggregate-analysis"></a>
+## 9.1. 聚合分析(aggregate analysis)
+ 一个 n 个操作的序列最坏情况下花费的总时间为$T(n)$, 则在最坏情况下, 每个操作的摊还代价为 $\frac{T(n)}{n}$
+
+如栈中的 push, pop 操作都是 $O(1)$, 增加一个新操作 `multipop`, 
+```python
+def multipop(stk,k):
+  while not stk.empty() and k>0:
+    stk.pop()
+    k-=1
+```
+multipop 的时间复杂度为 min(stk.size,k), 最坏情况为 $O(n)$, 则 n 个包含 push pop multipop 的操作列的最坏情况是 $O(n^2)$, 并不是这样, 注意到, 必须栈中有元素, 再 pop, 所以 push 操作与pop 操作(包含 multipop中的pop), 个数相当, 所以 实际上应为 $O(n)$, 每个操作的摊还代价 为$O(1)$
+
+<a id="markdown-92-核算法-accounting-method" name="92-核算法-accounting-method"></a>
+## 9.2. 核算法 (accounting method)
+对不同操作赋予不同费用 cost (称为摊还代价 $c_i'$), 可能多于或者少于其实际代价 $c_i$ 
+
+当 $c_i'>c_i$, 将  $c_i'-c_i$( `credit`) 存入数据结构中的特定对象.. 对于后续 $c_i'<c_i$时, 可以使用这些credit来 支付差额.. 有要求 
+$$\sum_{i}c_i' \geqslant \sum_{i}c_i$$
+
+如栈
+op|$c_i'$|$c_i$
+:-:|:-:|:-:
+push|2|1
+pop|0|1
+multipop|0|min(s,k)
+ 
+由核算法, 摊还代价满足要求,  所以 n 个操作总代价 $O(n)$, 每个操作摊还代价为 $O(1)$
+
+<a id="markdown-93-势能法potential-method" name="93-势能法potential-method"></a>
+## 9.3. 势能法(potential method)
+势能释放用来支付未来操作的代价, 势能是整个数据结构的, 不是特定对象的(核算法是).
+
+数据结构 $D_0$为初始状态, 依次 执行 n 个操作 $op_i$进行势能转换 $D_i =op_i(D_{i-1}), i=1,2,\ldots,n$ , 各操作代价为 $c_i$
+
+势函数 $\Phi:D_i\rightarrow R$, $\Phi(D_i)$即为 $D_i$的势
+
+则第 i 个操作的摊还代价 
+$$c_i'=c_i+\Phi(D_i)-\Phi(D_{i-1})$$
+
+则
+$$\sum_{i=1}^{n}c_i'=\sum_{i=1}^{n}c_i+\Phi(D_n)-\Phi(D_0)$$
+
+如果定义一个势函数$\Phi, st \ \Phi(D_i)\geqslant\Phi(D_0)$, 则总摊还代价给出了实际代价的一个上界
+可以简单地以 $D_0 \text{为参考状态}, then \ \Phi(D_0)=0$
+
+例如栈操作, 
+设空栈为 $D_0$, 势函数定义为栈的元素数
+对于push, $ \Phi(D_i)-\Phi(D_0)=1$
+则 $c' = c +\Phi(D_i)-\Phi(D_0) = c+1 = 2$
+
+对于 multipop,  $ \Phi(D_i)-\Phi(D_0)=- min(k,s)$
+则 $c' = c - min(k,s) = 0$
+
+同理 pop  的摊还代价也是0, 则总摊还代价的上界(最坏情况) 为 $O(n)$
+
+
 
