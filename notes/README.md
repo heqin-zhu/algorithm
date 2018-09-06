@@ -4,8 +4,11 @@
 
 # 索引
 * [.](.)
-    * [alg-general.md](./alg-general.md)
+    * [algorithm-general.md](./algorithm-general.md)
+    * [b-tree.md](./b-tree.md)
+    * [fib-heap.md](./fib-heap.md)
+    * [graph.md](./graph.md)
     * [hashTable.md](./hashTable.md)
+    * [red-black-tree.md](./red-black-tree.md)
     * [sort.md](./sort.md)
     * [tree.md](./tree.md)
-    * [README.md](./README.md)

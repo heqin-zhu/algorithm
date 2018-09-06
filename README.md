@@ -21,6 +21,8 @@ So,if you wannt to view the notes which contain latex math formulas and are in m
         * [sort.md](./notes/sort.md)
         * [tree.md](./notes/tree.md)
         * [b-tree.md](./notes/b-tree.md)
+        * [graph](./notes/graph.md)
+        * [fibonacci-heap](./notes/fib-heap.md)
     * [algorithm](./algorithm)
         * [8Astar.py](./algorithm/8Astar.py)
         * [cantor.cc](./algorithm/cantor.cc)
