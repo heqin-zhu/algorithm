@@ -1,3 +1,13 @@
+---
+title: 『数据结构』B树(B-Tree)及其变体 B+树,B*树
+date: 2018-08-29  15:42
+categories: 数据结构与算法
+tags: [数据结构,B树,数据库]
+keywords:  数据结构,B树,数据库
+mathjax: true
+description: 
+---
+
 <!-- TOC -->
 
 - [1. 背景](#1-背景)
@@ -16,6 +26,9 @@
 
 <!-- /TOC -->
 <a id="markdown-1-背景" name="1-背景"></a>
+
+{% note info %}从此心里有了B数(●'◡'●){% endnote %}
+
 # 1. 背景
 当有大量数据储存在磁盘时,如数据库的查找,插入, 删除等操作的实现,  如果要读取或者写入, 磁盘的寻道, 旋转时间很长, 远大于在 内存中的读取,写入时间. 
 
@@ -593,4 +606,3 @@ class bTree:
 [^3]:[B - 树特征及插入删除操作总结](https://blog.csdn.net/u010842515/article/details/68487817)
 [^4]: [B+树](https://zh.wikipedia.org/wiki/B%2B%E6%A0%91)
 [^5]: [从 B 树、B + 树、B * 树谈到 R 树](https://blog.csdn.net/v_JULY_v/article/details/6530142)
-
