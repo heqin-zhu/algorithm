@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : splitStripe.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-08-24  17:07
+# Description:
+#########################################################################
+'''
+
 '''
     There is stripe which length is n, 
     priceMap contains a map for different length of stripe and its price

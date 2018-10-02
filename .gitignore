@@ -1,7 +1,5 @@
 .*
 *.o
 *.exe
-tree_link.py
 __pycache__/**
 !.gitignore
-todo

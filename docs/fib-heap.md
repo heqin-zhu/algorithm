@@ -1,3 +1,29 @@
+---
+title: 『数据结构』Fibonacci-heap
+date: 2018-09-06  19:09
+categories: 数据结构与算法
+tags: [数据结构,斐波那契堆]
+keywords:  数据结构,斐波那契堆
+mathjax: true
+description: 
+---
+
+<!-- TOC -->
+
+- [1. 结构](#1-结构)
+- [2. 势函数](#2-势函数)
+- [3. 最大度数](#3-最大度数)
+- [4. 操作](#4-操作)
+    - [4.1. 创建一个斐波那契堆](#41-创建一个斐波那契堆)
+    - [4.2. 插入一个结点](#42-插入一个结点)
+    - [4.3. 寻找最小结点](#43-寻找最小结点)
+    - [4.4. 合并两个斐波那契堆](#44-合并两个斐波那契堆)
+    - [4.5. 抽取最小值](#45-抽取最小值)
+    - [4.6. 关键字减值](#46-关键字减值)
+    - [4.7. 删除结点](#47-删除结点)
+- [5. 最大度数的证明](#5-最大度数的证明)
+
+<!-- /TOC -->
 
 ![](https://upload-images.jianshu.io/upload_images/7130568-22531846a72b0d83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -12,16 +38,15 @@
 
 <a id="markdown-2-势函数" name="2-势函数"></a>
 # 2. 势函数
+下面用势函数来分析摊还代价, 如果你不明白, 可以看[摊还分析](https://www.jianshu.com/p/052fbe9d92a4)
+
 $\Phi(H) = t(H) + 2m(h)$
 t 是根链表中树的数目,m(H) 表示被标记的结点数
 
 最初没有结点
 <a id="markdown-3-最大度数" name="3-最大度数"></a>
 # 3. 最大度数
-$D(n)\leqslant \lfloor lgn \rfloor$
-![](https://upload-images.jianshu.io/upload_images/7130568-c9e0cd3be4e98c4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+结点的最大度数(即孩子数)$D(n)\leqslant \lfloor lgn \rfloor$, 证明放在最后
 <a id="markdown-4-操作" name="4-操作"></a>
 # 4. 操作
 <a id="markdown-41-创建一个斐波那契堆" name="41-创建一个斐波那契堆"></a>
@@ -133,19 +158,13 @@ def cascading-cut(H,y):
 
 <a id="markdown-47-删除结点" name="47-删除结点"></a>
 ## 4.7. 删除结点
+```python
 decrease(H,nd, MIN)
-<!-- TOC -->
+extract-min(H)
+```
 
-- [1. 结构](#1-结构)
-- [2. 势函数](#2-势函数)
-- [3. 最大度数](#3-最大度数)
-- [4. 操作](#4-操作)
-    - [4.1. 创建一个斐波那契堆](#41-创建一个斐波那契堆)
-    - [4.2. 插入一个结点](#42-插入一个结点)
-    - [4.3. 寻找最小结点](#43-寻找最小结点)
-    - [4.4. 合并两个斐波那契堆](#44-合并两个斐波那契堆)
-    - [4.5. 抽取最小值](#45-抽取最小值)
-    - [4.6. 关键字减值](#46-关键字减值)
-    - [4.7. 删除结点](#47-删除结点)
-
-<!-- /TOC -->
+<a id="markdown-5-最大度数的证明" name="5-最大度数的证明"></a>
+# 5. 最大度数的证明
+这也是`斐波那契`这个名字的由来,
+$D(n)\leqslant \lfloor lgn \rfloor$
+![](https://upload-images.jianshu.io/upload_images/7130568-c9e0cd3be4e98c4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

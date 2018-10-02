@@ -1,3 +1,15 @@
+''' mbinary
+#########################################################################
+# File : bTree.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-08-29  12:49
+# Description:
+#########################################################################
+'''
+
 class node:
     def __init__(self,keys=None,isLeaf = True,children=None):
         if keys is None:keys=[]

@@ -1,3 +1,13 @@
+---
+title: 图算法
+date: 2018-09-06  19:10
+categories: 数据结构与算法
+tags: [图,算法]
+keywords: 图,算法 
+mathjax: true
+description: 
+---
+
 <!-- TOC -->
 
 - [1. 图](#1-图)
@@ -161,7 +171,7 @@ for  edge as u,v in sorted(G.E):
 return edges
 ```
 如果并查集的实现采用了 按秩合并与路径压缩技巧, 则 find 与 union 的时间接近常数
-所以时间复杂度在于排序边, 即 $O(ElgE)$, 而 $E<V^2$, 所以 $lgE = O(lgV)$, 时间复杂度为  $O(ElgV)$ 
+所以时间复杂度在于排序边, 即 $O(ElgE)$, 而 $ E\< V^2 $, 所以 $lgE = O(lgV)$, 时间复杂度为  $O(ElgV)$ 
 <a id="markdown-32-prim-算法" name="32-prim-算法"></a>
 ## 3.2. Prim 算法
 用了 BFS, 类似 Dijkstra 算法
@@ -190,7 +200,7 @@ while not que.isempty():
 
 <a id="markdown-4-单源最短路" name="4-单源最短路"></a>
 # 4. 单源最短路
-求一个结点到其他结点的最短路径, 可以用 Bellman-ford算法, 或者 Dijkstra算法.  
+求一个结点到其他结点的最短路径, 可以用 Bellman-Ford算法, 或者 Dijkstra算法.  
 定义两个结点u,v间的最短路 
 $$
 \delta(u,v) = \begin{cases}
@@ -205,7 +215,7 @@ $$
 
 <a id="markdown-41-负权重的边" name="41-负权重的边"></a>
 ## 4.1. 负权重的边
-Dijkstra 算法不能处理, 只能用 Bellman-Ford 算法, 
+Dijkstra 算法不能处理负权边, 只能用 Bellman-Ford 算法, 
 而且如果有负值圈, 则没有最短路,  bellman-ford算法也可以检测出来
 <a id="markdown-42-初始化" name="42-初始化"></a>
 ## 4.2. 初始化
@@ -288,7 +298,7 @@ $$
 $$
 \delta(i,j) = l_{ij}^{(|V|-1)} = l_{ij}^{(|V|)} =l_{ij}^{(|V| + 1)}= ...
 $$
-所以客户处自底向上计算, 如下
+所以可以自底向上计算, 如下
 输入权值矩阵 $W(w_{ij})),  L^{(m-1)}$,输出$ L^{(m)}$,  其中 $L^{(1)} = W$,
 ```python
 n = L.rows
