@@ -18,7 +18,6 @@ class node:
         self.val =val
         self.left = left
         self.right = right
-        self.parent= None
         self.isBlack  = isBlack
     def __lt__(self,nd):
         return self.val < nd.val
@@ -27,8 +26,6 @@ class node:
     def setChild(self,nd,isLeft):
         if isLeft: self.left = nd
         else: self.right = nd
-        if nd is not None: nd.parent = self
-
     def getChild(self,isLeft):
         if isLeft: return self.left
         else: return self.right
@@ -36,7 +33,6 @@ class node:
         return self.val is not None
     def __str__(self):
         color = 'B' if self.isBlack else 'R'
-        val = '-' if self.parent==None else self.parent.val
         return f'{color}-{self.val}'
     def __repr__(self):
         return f'node({self.val},isBlack={self.isBlack})'
@@ -55,9 +51,17 @@ class redBlackTree:
             if isBlack is None or isBlack:
                 nd.isBlack = True
             else:nd.isBlack = False
-    def setRoot(self,nd):
-        if nd is not None: nd.parent=None
-        self.root= nd
+    def getParent(self,chd):
+        '''note that use is to find real node when different nodes have euqiv val'''
+        if self.root is chd:return None
+        nd = self.root
+        while nd:
+            if nd>chd and  nd.left is not None:
+                if nd.left is  chd: return nd
+                else: nd = nd.left
+            elif nd<chd and  nd.right is not None:
+                if nd.right is  chd: return nd
+                else: nd = nd.right
     def find(self,val):
         nd = self.root
         while nd:
@@ -72,19 +76,21 @@ class redBlackTree:
                 while nd.left:
                     nd = nd.left
                 return nd
-            else:
-                while nd.parent is not None and nd.parent.right is nd:
-                    nd = nd.parent
-                return None if nd is self.root else nd.parent
-    def rotate(self,prt,chd):
-        '''rotate prt with the center of chd''' 
-        if self.root is prt:
-            self.setRoot(chd)
+            else:return self.getParent(nd)
+    def setRoot(self,nd):
+        if nd is not None: nd.parent=None
+        self.root= nd
+    def transferParent(self,origin,new):
+        if origin is  self.root:
+            self.root = new
         else:
-            prt.parent.setChild(chd, prt.parent.left is prt)
-        isLeftChd = prt.left is chd
-        prt.setChild(chd.getChild(not isLeftChd), isLeftChd)
-        chd.setChild(prt,not isLeftChd)
+            prt = self.getParent(origin)
+            prt.setChild(new, prt.left is origin)
+    def rotate(self,prt,chd,direction):
+        '''rotate prt, and return new prt, namyly the original chd'''
+        prt.setChild(chd.getChild(direction), not direction)
+        chd.setChild(prt,direction)
+        return chd
 
     def insert(self,nd):
         if nd.isBlack: nd.isBlack = False
@@ -107,8 +113,8 @@ class redBlackTree:
     def fixUpInsert(self,parent,nd):
         ''' adjust color and level,  there are two red nodes: the new one and its parent'''
         while not self.checkBlack(parent):
-            grand = parent.parent
-            isLeftPrt = grand.left is parent
+            grand = self.getParent(parent)
+            isLeftPrt = grand.left is parent 
             uncle = grand.getChild(not isLeftPrt)
             if not self.checkBlack(uncle):
                 # case 1:  new node's uncle is red
@@ -116,7 +122,7 @@ class redBlackTree:
                 self.setBlack(grand.left, True)
                 self.setBlack(grand.right, True)
                 nd = grand
-                parent = nd.parent
+                parent = self.getParent(nd)
             else:
                 # case 2: new node's uncle is black(including nil leaf)
                 isLeftNode = parent.left is nd
@@ -125,16 +131,20 @@ class redBlackTree:
                     #         grand               grand
                     #     parent        or            parent
                     #          nd                   nd
-                    self.rotate(parent,nd)    #parent rotate
+                    self.rotate(parent,nd,isLeftPrt)    #parent rotate
+                    grand.setChild(nd,isLeftPrt)
                     nd,parent = parent,nd
-                # case 3  (case 2.2) the new node is inserted in left-left or right-right form
+                # case 2.2 the new node is inserted in left-left or right-right form
                 #         grand               grand
                 #      parent        or            parent
                 #     nd                                nd
 
+                # grand rotate
+                
+                self.rotate(grand,parent,not isLeftPrt)
                 self.setBlack(grand, False)
                 self.setBlack(parent, True)
-                self.rotate(grand,parent)
+                self.transferParent(grand,parent)
         self.setBlack(self.root,True)
 
     def copyNode(self,src,des):
@@ -148,55 +158,58 @@ class redBlackTree:
         if isinstance(val,node): val = val.val
         nd = self.find(val)
         if nd is None: return
-        self._delete(nd)
-    def _delete(self,nd):
         y = None
         if nd.left and nd.right:
             y= self.getSuccessor(nd)
         else:
             y = nd
-        py = y.parent
+        py = self.getParent(y)
         x = y.left if y.left else y.right
         if py is None:
-            self.setRoot(x)
+            self.root = x
         else:
             py.setChild(x,py.left is y)
         if y != nd:
             self.copyNode(y,nd)
+
         if self.checkBlack(y): self.fixUpDel(py,x)
+
  
     def fixUpDel(self,prt,chd):
         ''' adjust colors and rotate '''
         while self.root != chd and self.checkBlack(chd):
-            isLeft =prt.left is chd
+            isLeft = prt.left is  chd 
             brother = prt.getChild(not isLeft)
             # brother is black
             lb = self.checkBlack(brother.getChild(isLeft))
             rb = self.checkBlack(brother.getChild(not isLeft))
             if  not self.checkBlack(brother):
                 # case 1: brother is red.   converted to  case 2,3,4
+                # prt (isLeft) rotate
+
+                self.rotate(prt,brother,isLeft)
 
                 self.setBlack(prt,False)
                 self.setBlack(brother,True)
-                self.rotate(prt,brother)
 
+                self.transferParent(prt,brother)
             elif lb and rb: 
                 # case 2: brother is black and two kids are black. 
                 # conveted to the begin case
                 self.setBlack(brother,False)
                 chd = prt
-                prt= chd.parent
+                prt = self.getParent(chd)
             else:
                 if  rb:
                     # case 3: brother is black and left kid is red and right child is black
-                    # rotate bro to make g w wl wr in one line
                     # uncle's son is nephew, and niece for uncle's daughter
                     nephew = brother.getChild(isLeft)
                     self.setBlack(nephew,True)
                     self.setBlack(brother,False)
 
                     # brother (not isLeft) rotate
-                    self.rotate(brother,nephew)
+                    prt.setChild(nephew,not isLeft)
+                    self.rotate(brother,nephew,not isLeft)
                     brother = nephew
 
                 # case 4: brother is black and right child is red
@@ -204,7 +217,11 @@ class redBlackTree:
                 self.setBlack(prt,True)
                 self.setBlack(brother.getChild(not isLeft),True)
 
-                self.rotate(prt,brother)
+                # prt left rotate
+                self.rotate(prt,brother,isLeft)
+
+                self.transferParent(prt,brother)
+
                 chd = self.root
         self.setBlack(chd,True)
 
@@ -247,7 +264,7 @@ class redBlackTree:
                     lst +=[None,None]
             return level
         def addBlank(lines):
-            width = 1+len(str(self.root))
+            width = 5
             sep = ' '*width
             n = len(lines)
             for i,oneline in enumerate(lines):
@@ -262,10 +279,10 @@ class redBlackTree:
         lines = levelVisit(self.root)
         lines = addBlank(lines)
         li = [''.join(line) for line in lines]
-        length = 10 if li==[] else max(len(i) for i in li)//2
-        begin ='\n'+ 'red-black-tree'.rjust(length+14,'-')  + '-'*(length)
-        end = '-'*(length*2+14)+'\n'
-        return  '\n'.join([begin,*li,end])
+        li.insert(0,'red-black-tree'.rjust(48,'-')  + '-'*33)
+        li.append('end'.rjust(42,'-')+'-'*39+'\n')
+        return  '\n'.join(li)
+       
     def __str__(self):
         return self.display()
 
@@ -291,7 +308,7 @@ def buildTree(n=10,nums=None,visitor=None):
     return rbtree,nums
 def testInsert(nums=None):
     def visitor(t,val):
-        print('inserting', val)
+        print('inserting',val)
         print(t)
     rbtree,nums = buildTree(visitor = visitor,nums=nums)
     print('-'*5+ 'in-order visit' + '-'*5)
@@ -300,20 +317,23 @@ def testInsert(nums=None):
 
 def testSuc(nums=None):
     rbtree,nums = buildTree(nums=nums)
+    print(rbtree)
     for i in rbtree.sort():
         print(f'{i}\'s suc is {rbtree.getSuccessor(i)}')
 
 def testDelete(nums=None):
     rbtree,nums = buildTree(nums = nums)
     print(rbtree)
-    for i in sorted(nums):
+    for i in nums:
         print(f'deleting {i}')
         rbtree.delete(i)
         print(rbtree)
 
 if __name__=='__main__':
-    lst =[45, 30, 64, 36, 95, 38, 76, 34, 50, 1]
-    lst = [0,3,5,6,26,25,8,19,15,16,17]
-    #testSuc(lst)
-    #testInsert(lst)
+    #lst = [41,38,31,12,19,8]
+    #lst.sort()
+    lst = None
+    lst =[45, 30, 64, 36, 95, 38, 76, 34, 50, 1] 
+    testSuc()
+    testInsert(lst)
     testDelete()

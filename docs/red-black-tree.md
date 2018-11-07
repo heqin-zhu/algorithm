@@ -7,7 +7,6 @@ keywords:
 mathjax: true
 description: 
 ---
-
 <!-- TOC -->
 
 - [1. 定义与性质](#1-定义与性质)
@@ -47,7 +46,6 @@ description:
 * right:pointer to right child
 * p: pointer to nil leaf
 
-
 <a id="markdown-12-红黑性质" name="12-红黑性质"></a>
 ## 1.2. 红黑性质
 满足下面的 `红黑性质` 的二叉查找树就是红黑树:
@@ -56,7 +54,6 @@ description:
 * nil leaf 是 黑
 * 红结点的孩子是黑
 * 从每个结点出发,通过子孙到达叶子结点的各条路径上 黑结点数相等
-
 
 如,叶子结点 是 nil, 即不存储任何东西, 为了编程方便,相对的,存有数据的结点称为内结点
 ![](https://upload-images.jianshu.io/upload_images/7130568-95927d3ca6cc524d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -98,7 +95,6 @@ $$n \geqslant 2^{h_b(x)} -1 \geqslant 2^{\frac{h}{2}} -1$$
 * 先同二叉查找树那样插入, 做为叶子(不为空)
 * 然后将新结点的 左右孩子设为 nil , 颜色设为红色
 * 最后再进行颜色调整以及旋转(维持红黑性质)
-
 
 这是算法导论[^1]上的算法
 ```python
@@ -198,7 +194,11 @@ RB-INSERT(T, z)
 ### 3.2.3. 总体解决方案
 我最开始也没有弄清楚, 有点绕晕的感觉, 后来仔细读了书上伪代码, 然后才发现就是一个状态机, 画出来就一目了然了.
 
-![](https://upload-images.jianshu.io/upload_images/7130568-bd3a0ffca482eb73.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://upload-images.jianshu.io/upload_images/7130568-53dd71e22a315242.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
+
 
 
 现在算是知其然了, 那么怎样知其所以然呢? 即 为什么要分类这三个 case, 不重不漏了吗?
@@ -287,11 +287,9 @@ color[root[T]] ← BLACK
 
 * 当 z 孩子全是 nil (y==z): 直接让其双亲对应的孩子为 nil
 * 当 z 只有一个非 nil 孩子 x  (y==z): 
-
     1. 如果 z 为根, 则让 x 为根.   
     2. 让 y 的双亲连接到 x
 * 当 z 有两个非nil孩子(y!=z): 复制其后继 y 的内容到 z (除了指针,颜色) ,  将其后继 y 的孩子(最多只有一个 非 nil ,不然就不是后继了)连接到其后继的双亲, 删除 其后继y, 
-
 
 即[^3]  如果要删除有两个孩子的结点 z , 则找到它的后继y(前趋同理), 可以推断 y 一定没有左孩子, 右孩子可能有,可能没有. 也就是最多一个孩子.
 所以将 y 的值复制到 x 位置, 现在相当于删除 y 处的结点.
@@ -321,7 +319,6 @@ color[root[T]] ← BLACK
 * x 指向根,这时可以简单地消除额外的黑色
 * 颜色修改与旋转
 
-
 在 while 中, x 总是指向具有双重黑色的那个非根结点, 在第 2 行中要判断 x 是其双亲的左右孩子
 w 表示 x 的相抵. w 不能为 nil(因为 x 是双重黑色)
 
@@ -330,20 +327,19 @@ w 表示 x 的相抵. w 不能为 nil(因为 x 是双重黑色)
 
 即
 * x 的兄弟 w 是红色的
-
 ![](https://upload-images.jianshu.io/upload_images/7130568-cd139202bdc5406f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * x 的兄弟 w 是黑色的, w的两个孩子都是黑色的
 
-
 * x 的兄弟 w 是黑色的, w 的左孩子是红,右孩子是黑
 * x 的兄弟 w 是黑色的, w 的孩子是红色的
-
 
 >>注意上面都是先考虑的左边, 右边可以对称地处理.
 
 同插入一样, 为了便于理解, 可以作出状态机.
 而且这些情形都是归纳化简了的, 你也可以枚举列出基本的全部情形.
-![](https://upload-images.jianshu.io/upload_images/7130568-d6e8a332afade8d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![](https://upload-images.jianshu.io/upload_images/7130568-005e2a7d55860559.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 <a id="markdown-5-数据结构的扩张" name="5-数据结构的扩张"></a>
 # 5. 数据结构的扩张
@@ -374,28 +370,23 @@ def find(root,i):
 <a id="markdown-6-python-代码" name="6-python-代码"></a>
 # 6. python 代码
 
-**[github地址](https://github.com/mbinary/algorithm-and-data-structure.git)**
+**[github地址](https://github.com/mbinary/algorithm-in-python.git)**
 
-我的代码有两点不同
-* 用了 setChild, getChild 来简化代码量
-* 每个结点没有上面的 p 域, 即指向 nil leaf的,我直接让 left, right 为 `None`, 然后定义了两个函数 `setBlack`, `checkBlack` 来操作 颜色数据 isBlack(当为 True 时代表黑色,否则为红). 如果为 None, 这两个函数也能正确的处理.可以直接见代码
-
-
-其他的基本上是按照算法导论上的伪代码提到的case 来实现的. 然后display 只是测试的时候,为了方便调试而层序遍历打印出来 
+我用了 setChild, getChild 来简化代码量, 其他的基本上是按照算法导论上的伪代码提到的case 来实现的. 然后display 只是测试的时候,为了方便调试而层序遍历打印出来
 
 效果如下
 ![](https://upload-images.jianshu.io/upload_images/7130568-721e18cc44dec604.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```python
-'''
+''' mbinary
 #########################################################################
 # File : redBlackTree.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
 # Blog: https://mbinary.coding.me
 # Github: https://github.com/mbinary
-# Created Time: 2018-07-12  20:34
-# Description: 
+# Created Time: 2018-07-14  16:15
+# Description:
 #########################################################################
 '''
 from functools import total_ordering
@@ -407,14 +398,17 @@ class node:
         self.val =val
         self.left = left
         self.right = right
+        self.parent= None
         self.isBlack  = isBlack
     def __lt__(self,nd):
         return self.val < nd.val
     def __eq__(self,nd):
         return nd is not None and self.val == nd.val
-    def setChild(self,nd,isLeft = True):
+    def setChild(self,nd,isLeft):
         if isLeft: self.left = nd
         else: self.right = nd
+        if nd is not None: nd.parent = self
+
     def getChild(self,isLeft):
         if isLeft: return self.left
         else: return self.right
@@ -422,7 +416,8 @@ class node:
         return self.val is not None
     def __str__(self):
         color = 'B' if self.isBlack else 'R'
-        return f'{color}-{self.val:}'
+        val = '-' if self.parent==None else self.parent.val
+        return f'{color}-{self.val}'
     def __repr__(self):
         return f'node({self.val},isBlack={self.isBlack})'
 class redBlackTree:
@@ -440,6 +435,159 @@ class redBlackTree:
             if isBlack is None or isBlack:
                 nd.isBlack = True
             else:nd.isBlack = False
+    def setRoot(self,nd):
+        if nd is not None: nd.parent=None
+        self.root= nd
+    def find(self,val):
+        nd = self.root
+        while nd:
+            if nd.val ==val:
+                return nd
+            else:
+                nd = nd.getChild(nd.val>val)
+    def getSuccessor(self,nd):
+        if nd:
+            if nd.right:
+                nd = nd.right
+                while nd.left:
+                    nd = nd.left
+                return nd
+            else:
+                while nd.parent is not None and nd.parent.right is nd:
+                    nd = nd.parent
+                return None if nd is self.root else nd.parent
+    def rotate(self,prt,chd):
+        '''rotate prt with the center of chd'''
+        if self.root is prt:
+            self.setRoot(chd)
+        else:
+            prt.parent.setChild(chd, prt.parent.left is prt)
+        isLeftChd = prt.left is chd
+        prt.setChild(chd.getChild(not isLeftChd), isLeftChd)
+        chd.setChild(prt,not isLeftChd)
+
+    def insert(self,nd):
+        if nd.isBlack: nd.isBlack = False
+
+        if self.root is None:
+            self.setRoot(nd)
+            self.root.isBlack = True
+        else:
+            parent = self.root
+            while parent:
+                if parent == nd : return None
+                isLeft = parent > nd
+                chd  = parent.getChild(isLeft)
+                if chd is None:
+                    parent.setChild(nd,isLeft)
+                    break
+                else:
+                    parent = chd
+            self.fixUpInsert(parent,nd)
+    def fixUpInsert(self,parent,nd):
+        ''' adjust color and level,  there are two red nodes: the new one and its parent'''
+        while not self.checkBlack(parent):
+            grand = parent.parent
+            isLeftPrt = grand.left is parent
+            uncle = grand.getChild(not isLeftPrt)
+            if not self.checkBlack(uncle):
+                # case 1:  new node's uncle is red
+                self.setBlack(grand, False)
+                self.setBlack(grand.left, True)
+                self.setBlack(grand.right, True)
+                nd = grand
+                parent = nd.parent
+            else:
+                # case 2: new node's uncle is black(including nil leaf)
+                isLeftNode = parent.left is nd
+                if isLeftNode ^ isLeftPrt:
+                    # case 2.1 the new node is inserted in left-right or right-left form
+                    #         grand               grand
+                    #     parent        or            parent
+                    #          nd                   nd
+                    self.rotate(parent,nd)    #parent rotate
+                    nd,parent = parent,nd
+                # case 3  (case 2.2) the new node is inserted in left-left or right-right form
+                #         grand               grand
+                #      parent        or            parent
+                #     nd                                nd
+
+                self.setBlack(grand, False)
+                self.setBlack(parent, True)
+                self.rotate(grand,parent)
+        self.setBlack(self.root,True)
+
+    def copyNode(self,src,des):
+        '''when deleting a node which has two kids,
+            copy its succesor's data to his position
+            data exclude left, right , isBlack
+        '''
+        des.val = src.val
+    def delete(self,val):
+        '''delete node in a binary search tree'''
+        if isinstance(val,node): val = val.val
+        nd = self.find(val)
+        if nd is None: return
+        self._delete(nd)
+    def _delete(self,nd):
+        y = None
+        if nd.left and nd.right:
+            y= self.getSuccessor(nd)
+        else:
+            y = nd
+        py = y.parent
+        x = y.left if y.left else y.right
+        if py is None:
+            self.setRoot(x)
+        else:
+            py.setChild(x,py.left is y)
+        if y != nd:
+            self.copyNode(y,nd)
+        if self.checkBlack(y): self.fixUpDel(py,x)
+
+    def fixUpDel(self,prt,chd):
+        ''' adjust colors and rotate '''
+        while self.root != chd and self.checkBlack(chd):
+            isLeft =prt.left is chd
+            brother = prt.getChild(not isLeft)
+            # brother is black
+            lb = self.checkBlack(brother.getChild(isLeft))
+            rb = self.checkBlack(brother.getChild(not isLeft))
+            if  not self.checkBlack(brother):
+                # case 1: brother is red.   converted to  case 2,3,4
+
+                self.setBlack(prt,False)
+                self.setBlack(brother,True)
+                self.rotate(prt,brother)
+
+            elif lb and rb:
+                # case 2: brother is black and two kids are black.
+                # conveted to the begin case
+                self.setBlack(brother,False)
+                chd = prt
+                prt= chd.parent
+            else:
+                if  rb:
+                    # case 3: brother is black and left kid is red and right child is black
+                    # rotate bro to make g w wl wr in one line
+                    # uncle's son is nephew, and niece for uncle's daughter
+                    nephew = brother.getChild(isLeft)
+                    self.setBlack(nephew,True)
+                    self.setBlack(brother,False)
+
+                    # brother (not isLeft) rotate
+                    self.rotate(brother,nephew)
+                    brother = nephew
+
+                # case 4: brother is black and right child is red
+                brother.isBlack = prt.isBlack
+                self.setBlack(prt,True)
+                self.setBlack(brother.getChild(not isLeft),True)
+
+                self.rotate(prt,brother)
+                chd = self.root
+        self.setBlack(chd,True)
+
     def sort(self,reverse = False):
         ''' return a generator of sorted data'''
         def inOrder(root):
@@ -454,184 +602,6 @@ class redBlackTree:
             else:
                 yield from inOrder(root.right)
         yield from inOrder(self.root)
-    def getParent(self,chd):
-        '''note that use is to find real node when different nodes have euqiv val'''
-        if self.root is chd:return None
-        nd = self.root
-        while nd:
-            if nd>chd and  nd.left is not None:
-                if nd.left is  chd: return nd
-                else: nd = nd.left
-            elif nd<chd and  nd.right is not None:
-                if nd.right is  chd: return nd
-                else: nd = nd.right
-    def find(self,val):
-        nd = self.root
-        while nd:
-            if nd.val ==val:
-                return nd
-            elif nd.val>val:
-                nd = nd.left
-            else:
-                nd = nd.right
-    def getSuccessor(self,nd):
-        if nd:
-            if nd.right:
-                nd = nd.right
-                while nd.left:
-                    nd = nd.left
-                return nd
-            else:return self.getParent(nd)
-    def transferParent(self,origin,new):
-        if origin is  self.root:
-            self.root = new
-        else:
-            prt = self.getParent(origin)
-            prt.setChild(new, prt.left is origin)
-
-    def insert(self,nd):
-        if  not isinstance(nd,node):
-            nd = node(nd)
-        elif nd.isBlack: nd.isBlack = False
-
-        if self.root is None:
-            self.root = nd
-            self.root.isBlack = True
-        else:
-            parent = self.root
-            while parent:
-                if parent == nd : return None
-                if parent>nd:
-                    if parent.left :
-                        parent = parent.left
-                    else:
-                        parent.left  = nd
-                        break
-                else:
-                    if parent.right:
-                        parent = parent.right
-                    else:
-                        parent.right = nd
-                        break
-            self.fixUpInsert(parent,nd)
-    def fixUpInsert(self,parent,nd):
-        ''' adjust color and level,  there are two red nodes: the new one and its parent'''
-        while not self.checkBlack(parent):
-            grand = self.getParent(parent)
-            isLeftPrt = grand.left is parent 
-            uncle = grand.getChild(not isLeftPrt)
-            if not self.checkBlack(uncle):
-                # case 1:  new node's uncle is red
-                self.setBlack(grand, False)
-                self.setBlack(grand.left, True)
-                self.setBlack(grand.right, True)
-                nd = grand
-                parent = self.getParent(nd)
-            else:
-                # case 2: new node's uncle is black(including nil leaf)
-                isLeftNode = parent.left is nd
-                if isLeftNode ^ isLeftPrt:
-                    # case 2.1 the new node is inserted in left-right or right-left form
-                    #         grand               grand
-                    #     parent        or            parent
-                    #          nd                   nd
-                    parent.setChild(nd.getChild(isLeftPrt),not isLeftPrt)
-                    nd.setChild(parent,isLeftPrt)
-                    grand.setChild(nd,isLeftPrt)
-                    nd,parent = parent,nd
-                # case 2.2 the new node is inserted in left-left or right-right form
-                #         grand               grand
-                #      parent        or            parent
-                #     nd                                nd
-                grand.setChild(parent.getChild(not isLeftPrt),isLeftPrt)
-                parent.setChild(grand,not isLeftPrt)
-                self.setBlack(grand, False)
-                self.setBlack(parent, True)
-                self.transferParent(grand,parent)
-        self.setBlack(self.root,True)
-
-    def copyNode(self,src,des):
-        '''when deleting a node which has two kids, 
-            copy its succesor's data to his position
-            data exclude left, right , isBlack
-        '''
-        des.val = src.val
-    def delete(self,nd):
-        '''delete node in a binary search tree'''
-        if not isinstance(nd,node):
-            nd = self.find(nd)
-        if nd is None: return
-        y = None
-        if nd.left and nd.right:
-            y= self.getSuccessor(nd)
-        else:
-            y = nd
-        py = self.getParent(y)
-        x = y.left if y.left else y.right
-        if py is None:
-            self.root = x
-        elif y is py.left:
-            py.left = x
-        else:
-            py.right = x
-        if y != nd:
-            self.copyNode(y,nd)
-
-        if self.checkBlack(y): self.fixUpDel(py,x)
-
- 
-    def fixUpDel(self,prt,chd):
-        ''' adjust colors and rotate '''
-        while self.root != chd and self.checkBlack(chd):
-            isLeft = prt.left is  chd 
-            brother = prt.getChild(not isLeft)
-            # brother is black
-            lb = self.checkBlack(brother.getChild(isLeft))
-            rb = self.checkBlack(brother.getChild(not isLeft))
-            if  not self.checkBlack(brother):
-                # case 1: brother is red.   converted to  case 2,3,4
-                # prt (isLeft) rotate
-                prt.setChild(brother.getChild(isLeft), not isLeft)
-                brother.setChild(prt, isLeft)
-
-                self.setBlack(prt,False)
-                self.setBlack(brother,True)
-
-                self.transferParent(prt,brother)
-            elif lb and rb: 
-                # case 2: brother is black and two kids are black. 
-                # conveted to the begin case
-                self.setBlack(brother,False)
-                chd = prt
-                prt = self.getParent(chd)
-            else:
-                if  rb:
-                    # case 3: brother is black and left kid is red and right child is black
-                    # uncle's son is nephew, and niece for uncle's daughter
-                    nephew = brother.getChild(isLeft)
-                    self.setBlack(nephew,True)
-                    self.setBlack(brother,False)
-
-                    # brother (not isLeft) rotate
-                    prt.setChild(nephew,not isLeft)
-                    brother.setChild(nephew.getChild(not isLeft),isLeft)
-                    nephew.setChild(brother, not isLeft)
-                    brother = nephew
-
-                # case 4: brother is black and right child is red
-                brother.isBlack = prt.isBlack
-                self.setBlack(prt,True)
-                self.setBlack(brother.getChild(not isLeft),True)
-
-                # prt left rotate
-                prt.setChild(brother.getChild(isLeft),not isLeft)
-                brother.setChild(prt,isLeft)
-
-                self.transferParent(prt,brother)
-
-                chd = self.root
-        self.setBlack(chd,True)
-
 
     def display(self):
         def getHeight(nd):
@@ -657,7 +627,7 @@ class redBlackTree:
                     lst +=[None,None]
             return level
         def addBlank(lines):
-            width = 5
+            width = 1+len(str(self.root))
             sep = ' '*width
             n = len(lines)
             for i,oneline in enumerate(lines):
@@ -672,15 +642,18 @@ class redBlackTree:
         lines = levelVisit(self.root)
         lines = addBlank(lines)
         li = [''.join(line) for line in lines]
-        li.insert(0,'red-black-tree'.rjust(48,'-')  + '-'*33)
-        li.append('end'.rjust(42,'-')+'-'*39+'\n')
-        return  '\n'.join(li)
-       
+        length = 10 if li==[] else max(len(i) for i in li)//2
+        begin ='\n'+ 'red-black-tree'.rjust(length+14,'-')  + '-'*(length)
+        end = '-'*(length*2+14)+'\n'
+        return  '\n'.join([begin,*li,end])
     def __str__(self):
         return self.display()
+
+
 ```
 测试代码
 ```python
+
 def genNum(n =10):
     nums =[]
     for i in range(n):
@@ -696,36 +669,37 @@ def buildTree(n=10,nums=None,visitor=None):
     rbtree = redBlackTree()
     print(f'build a red-black tree using {nums}')
     for i in nums:
-        rbtree.insert(i)
+        rbtree.insert(node(i))
         if visitor:
-            visitor(rbtree)
+            visitor(rbtree,i)
     return rbtree,nums
-def testInsert():
-    def visitor(t):
+def testInsert(nums=None):
+    def visitor(t,val):
+        print('inserting', val)
         print(t)
-    rbtree,nums = buildTree(visitor = visitor)
+    rbtree,nums = buildTree(visitor = visitor,nums=nums)
     print('-'*5+ 'in-order visit' + '-'*5)
     for i,j in enumerate(rbtree.sort()):
         print(f'{i+1}: {j}')
 
-def testSuc():
-    rbtree,nums = buildTree()
+def testSuc(nums=None):
+    rbtree,nums = buildTree(nums=nums)
     for i in rbtree.sort():
         print(f'{i}\'s suc is {rbtree.getSuccessor(i)}')
 
-def testDelete():
-    #nums = [2,3,3,2,6,7,2,1]
-    nums = None
+def testDelete(nums=None):
     rbtree,nums = buildTree(nums = nums)
     print(rbtree)
-    for i in nums:
+    for i in sorted(nums):
         print(f'deleting {i}')
         rbtree.delete(i)
         print(rbtree)
 
 if __name__=='__main__':
-    #testSuc()
-    #testInsert()
+    lst =[45, 30, 64, 36, 95, 38, 76, 34, 50, 1]
+    lst = [0,3,5,6,26,25,8,19,15,16,17]
+    #testSuc(lst)
+    #testInsert(lst)
     testDelete()
 ```
 
@@ -735,3 +709,4 @@ if __name__=='__main__':
 
 [^2]: https://www.jianshu.com/p/a5514510f5b9?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
 [^3]: https://www.jianshu.com/p/0b68b992f688?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
+

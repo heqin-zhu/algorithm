@@ -1,4 +1,4 @@
-# Algorithm and Data Structures
+# Algorithm 
 >Notes and codes for learning algorithm and data structures :smiley:
 
 Some pictures and ideas are from `<<Introduction to Algotithm>>
