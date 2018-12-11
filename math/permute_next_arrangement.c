@@ -1,3 +1,14 @@
+/* mbinary
+#########################################################################
+# File : permute_next_arrangement.c
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-11-17  14:31
+# Description:
+#########################################################################
+*/
 #include<stdio.h>
 
 void swap(int*arr,int i,int j)

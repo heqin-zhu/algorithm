@@ -1,3 +1,14 @@
+''' mbinary
+#########################################################################
+# File : schedule.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-11-30  12:00
+# Description:
+#########################################################################
+'''
 '''
 回溯全空间搜索, 剪枝优化
 

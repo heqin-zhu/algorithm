@@ -1,3 +1,14 @@
+''' mbinary
+#########################################################################
+# File : permute_divide_and_conquer.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-11-25  12:23
+# Description:
+#########################################################################
+'''
 def permute(lst,n):
     ''' O(n!), optimal'''
     if n==1:print(lst)

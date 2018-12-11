@@ -1,3 +1,14 @@
+''' mbinary
+#########################################################################
+# File : bloomFilter.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-10-17  11:19
+# Description:
+#########################################################################
+'''
 from bitarray import bitarray
 
 import mmh3

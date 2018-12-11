@@ -1,3 +1,14 @@
+/* mbinary
+#########################################################################
+# File : permute_cantor.c
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.coding.me
+# Github: https://github.com/mbinary
+# Created Time: 2018-11-17  11:25
+# Description:
+#########################################################################
+*/
 #include<stdio.h>
 
 //使用康托展开计算全排列, 下面存储的是0!,1!,2!...(n-1)!
