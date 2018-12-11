@@ -29,17 +29,22 @@ def lcs2(a,b):
     m,n= len(a),len(b)
     board = [[] for i in range(n+1)]
     for i in range(m):
-        last = []
+        upperLevel = board[0].copy()
         for j in range(n):
+            tmp = board[j+1].copy()
             if a[i]==b[j]:
-                board[j+1] =board[j]+[a[i]]
-            elif len(board[j+1]) < len(last):
-                board[j+1] = last
-            last = board[j+1]
+                board[j+1] = upperLevel+[a[i]]
+            elif len(board[j+1]) < len(board[j]):
+                board[j+1] = board[j].copy() # copy is needed
+            upperLevel = tmp
     return board[n]
 
 if __name__ =='__main__':
-    a="dsaffqewqfqewregqwefqwe"
-    b="adsfsfs3qt5yhyh24efwq"
-    print(lcs(a,b))
-    print(lcs2(a,b))
+    a = 'ABCBDAB'
+    b = 'BDCABA'
+    print('s1:',a)
+    print('s2:',b)
+    while 1:
+        print('lcs:',lcs2(a,b))
+        a = input('s1: ')
+        b = input('s2: ')

@@ -84,7 +84,7 @@ def genNum(n =10,upper=10):
     return nums.values()
 
 def buildTree(n=10,nums=None,visitor=None):
-    if nums is None or nums ==[]: nums = genNum(n)
+    #if nums is None or nums ==[]: nums = genNum(n)
     tree = intervalTree()
     print(f'build a red-black tree using {nums}')
     for i in nums:
@@ -100,6 +100,7 @@ def testInsert(nums=None):
     print('-'*5+ 'in-order visit' + '-'*5)
     for i,j in enumerate(tree.sort()):
         print(f'{i+1}: {j}')
+    return tree
 
 def testSuc(nums=None):
     tree,nums = buildTree(nums=nums)
@@ -113,10 +114,16 @@ def testDelete(nums=None):
         print(f'deleting {i}')
         tree.delete(i[0])
         print(tree)
+    return tree
 
 if __name__=='__main__':
     lst = [(0,3),(5,8),(6,10),(26,26),(25,30),(8,9),(19,20),(15,23),(16,21),(17,19)]
-    lst = None
+    #lst = None
     #testSuc(lst)
-    #testInsert(lst)
-    testDelete(lst)
+    tree = testInsert(lst)
+    #tree,_= buildTree(lst)
+    while 1:
+        a =int( input('low:'))
+        b =int( input('high:'))
+        res = tree.search(a,b)
+        print(res)

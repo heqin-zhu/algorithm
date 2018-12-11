@@ -286,6 +286,7 @@ def buildTree(n=10,nums=None,visitor=None):
     print(f'build a red-black tree using {nums}')
     for i in nums:
         rbtree.insert(node(i))
+        print(rbtree)
         if visitor:
             visitor(rbtree,i)
     return rbtree,nums

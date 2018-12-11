@@ -107,18 +107,18 @@ def test(f=minDistance_n2):
     print('result: {:.2f} {} {}\n'.format(minD, p,q))
 
 def genData(n,unique=True):
+    upper = 1000000
     if unique:
         points = set()
         for i in range(n):
-            points.add(point(randint(1,1000),randint(1,1000)))
+            points.add(point(randint(1,upper),randint(1,upper)))
         return list(points)
-    else:return [point(randint(1,1000),randint(1,1000)) for i in range(n)]
+    else:return [point(randint(1,upper),randint(1,upper)) for i in range(n)]
 
 if __name__ =='__main__':
-    n = 10000
+    n = 1000
     points = genData(n, unique=True)
     print('min distance of {} points'.format(n))
     #print(sorted(points))
     test(minDistance_n2)
     test(minDistance_nlogn)
-    

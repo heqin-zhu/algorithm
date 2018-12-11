@@ -11,7 +11,7 @@ void calFac(int n)
     }
 }
 
-void getArrangement(int *arr,int n,int sum)
+void permute(int *arr,int n,int sum)
 {
     /*sum表示全排列由小到大排序后的名次,从0 开始计数, 由名次求出 n位的排列存储到 arr 中*/
     int i,j,ct=0,k, ct2;
@@ -36,3 +36,21 @@ void getArrangement(int *arr,int n,int sum)
     }
 }
 
+void printArr(int *p,int n)
+{
+    for(int i=0;i<n;++i)printf("%d, ",p[i]);
+    printf("\n");
+}
+
+int main()
+{
+    int n = 5,arr[n];
+    calFac(n);
+    for(int i=0;i<5;++i)arr[i]=i; 
+    for(int i=0;i<fac[n];++i){
+        printArr(arr,n);
+        permute(arr,n,i);
+    }
+    return 0;
+}
+        

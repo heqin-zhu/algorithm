@@ -28,30 +28,50 @@ def find(s,p):
         if s[ps] == p[pp]:
             ps,pp = ps+1,pp+1
         else:
-            idx = ps-pp+np
+            idx = ps+ np-pp
             if idx >=ns:return -1
             ch = s[idx]
             if ch in dic:
                 ps += dic[ch]+1-pp
             else:
-                ps += np-pp
+                ps = idx+1
             pp = 0
     if pp==np:return ps-np
-    else: 
+    else:
         return -1
-def test():
-    s = [randint(78,88) for i in range(30)]
-    p = [randint(78,88) for i in range(3)]
+def findAll(s,p):
+    ns = len(s)
+    np = len(p)
+    i = 0
+    ret = []
+    while s:
+        print(s,p)
+        tmp = find(s,p)
+        if tmp==-1: break
+        ret.append(i+tmp)
+        end = tmp+np
+        i +=end
+        s = s[end:]
+    return ret
+
+
+
+def randStr(n=3):
+    return [randint(ord('a'),ord('z')) for i in range(n)]
+
+def test(n):
+    s = randStr(n)
+    p = randStr(3)
     str_s = ''.join((chr(i) for i in s))
     str_p = ''.join((chr(i) for i in p))
     n1 = find(s,p)
-    n2 = str_s.find(str_p)
+    n2 = str_s.find(str_p) # 利用已有的 str find 算法检验
     if n1!=n2:
         print(n1,n2,str_p,str_s)
         return False
     return True
 if __name__ =='__main__':
     from random import randint
-    n = 10000
-    suc = sum(test() for i in range(n))
-    print(f'test {n} times, success {suc} times')
+    n = 1000
+    suc = sum(test(n) for i in range(n))
+    print('test {n} times, success {suc} times'.format(n=n,suc=suc))
