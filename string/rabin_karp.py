@@ -30,7 +30,7 @@ def findAll(s,p):
             d+=1
     sm = 0
     for c in p:
-        if c not in dic:return [-1]
+        if c not in dic:return []
         sm = sm*d+dic[c]
 
     ret = []
