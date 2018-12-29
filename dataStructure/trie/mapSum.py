@@ -61,7 +61,6 @@ class MapSum:
                 nd[i] = node(i)
             nd = nd[i]
         nd.n = val
-            
     def visit(self,nd):
         ret = nd.n
         for chd in nd:

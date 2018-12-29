@@ -2,16 +2,12 @@
 # Algorithm 
 >Notes and codes for learning algorithm and data structures :smiley:
 
-Some pictures and ideas are from `<<Introduction to Algotithm>>
+Some pictures and ideas are from `<<Introduction to Algotithm>>`
 
-I use python 3.6+ and c++ to implements them.
-Since I used f-Strings in python, you may use python 3.6+ to run the following python scripts.
-
->>I am still learning new things and this repo is always updating.
+I use python 3.6+ and c/c++ to implement them.
 
 # Notice
-Currently, Github can't render latex math formulas.
-So,if you wannt to view the notes which contain latex math formulas and are in markdown format, you can visit [my blog](https://mbinary.coding.me)
+Currently, Github can't render latex math formulas.Thus,if you want to view the markodwn notes which contain latex math formulas, you can visit [my blog](https://mbinary.coding.me)
 
 # Index
 * [.](.)
@@ -21,12 +17,15 @@ So,if you wannt to view the notes which contain latex math formulas and are in m
         * [allOone](./dataStructure/allOone)
         * [bTree.py](./dataStructure/bTree.py)
         * [binaryHeap.py](./dataStructure/binaryHeap.py)
+        * [binaryHeap1.py](./dataStructure/binaryHeap1.py)
         * [binaryTree.py](./dataStructure/binaryTree.py)
+        * [circularQueue.py](./dataStructure/circularQueue.py)
         * [graph](./dataStructure/graph)
         * [hashTable.py](./dataStructure/hashTable.py)
         * [huffman](./dataStructure/huffman)
         * [intervalTree.py](./dataStructure/intervalTree.py)
         * [leftHeap.py](./dataStructure/leftHeap.py)
+        * [linkedList.py](./dataStructure/linkedList.py)
         * [loserTree.py](./dataStructure/loserTree.py)
         * [map.cc](./dataStructure/map.cc)
         * [polynomial.cpp](./dataStructure/polynomial.cpp)
@@ -35,6 +34,7 @@ So,if you wannt to view the notes which contain latex math formulas and are in m
         * [redBlackTree0.py](./dataStructure/redBlackTree0.py)
         * [splayTree.py](./dataStructure/splayTree.py)
         * [trie](./dataStructure/trie)
+        * [unionFindSet](./dataStructure/unionFindSet)
         * [winnerTree.py](./dataStructure/winnerTree.py)
     * [divideAndConquer](./divideAndConquer)
         * [min_distance_of_n_points.py](./divideAndConquer/min_distance_of_n_points.py)
@@ -59,29 +59,15 @@ So,if you wannt to view the notes which contain latex math formulas and are in m
         * [stoneGame.py](./dynamicProgramming/stoneGame.py)
         * [testVec2d.hs](./dynamicProgramming/testVec2d.hs)
         * [wildcard_matching.py](./dynamicProgramming/wildcard_matching.py)
+    * [graph](./graph)
+        * [isBipartGraph.py](./graph/isBipartGraph.py)
     * [math](./math)
         * [README.md](./math/README.md)
-        * [euler.py](./math/euler.py)
-        * [factor.py](./math/factor.py)
-        * [gcd.py](./math/gcd.py)
-        * [isPrime.py](./math/isPrime.py)
-        * [modulo_equation.py](./math/modulo_equation.py)
-        * [num_weight.py](./math/num_weight.py)
-        * [permute_back_track.py](./math/permute_back_track.py)
-        * [permute_cantor.c](./math/permute_cantor.c)
-        * [permute_divide_and_conquer.py](./math/permute_divide_and_conquer.py)
-        * [permute_next_arrangement.c](./math/permute_next_arrangement.c)
-        * [primesLEn.hs](./math/primesLEn.hs)
-    * [numericalAnalysis](./numericalAnalysis)
-        * [README.md](./numericalAnalysis/README.md)
-        * [interplotion.py](./numericalAnalysis/interplotion.py)
-        * [iteration.py](./numericalAnalysis/iteration.py)
-        * [least_square.py](./numericalAnalysis/least_square.py)
-        * [linear_equation.py](./numericalAnalysis/linear_equation.py)
-        * [numerical_differential.py](./numericalAnalysis/numerical_differential.py)
-        * [numerical_integration.py](./numericalAnalysis/numerical_integration.py)
-        * [solve-linear-by-iteration.py](./numericalAnalysis/solve-linear-by-iteration.py)
-        * [vector_norm.py](./numericalAnalysis/vector_norm.py)
+        * [convertWeight.py](./math/convertWeight.py)
+        * [fastPow.py](./math/fastPow.py)
+        * [numberTheory](./math/numberTheory)
+        * [numericalAnalysis](./math/numericalAnalysis)
+        * [permute](./math/permute)
     * [search](./search)
         * [8Astar.py](./search/8Astar.py)
         * [BFS_knight.hs](./search/BFS_knight.hs)
@@ -91,6 +77,7 @@ So,if you wannt to view the notes which contain latex math formulas and are in m
     * [sort](./sort)
         * [binaryTree.py](./sort/binaryTree.py)
         * [heapSort.py](./sort/heapSort.py)
+        * [quickSort.c](./sort/quickSort.c)
         * [quickSort.py](./sort/quickSort.py)
         * [radixSort.py](./sort/radixSort.py)
         * [select.py](./sort/select.py)

@@ -35,6 +35,16 @@ def factor(n):
         cycle_size *=2
         x_fixed = x
     return factor(fact)+factor(n//fact)
+def fact(n):
+    f=2
+    ret = []
+    while f*f<=n:
+        while not n%f:
+            ret.append(f)
+            n//f
+        f+=1
+    if n>1:ret.append(n)
+    return ret
 
 
 if __name__=='__main__':
