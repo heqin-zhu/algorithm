@@ -3,7 +3,7 @@
 # File : lcs.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-08-25  12:00
 # Description:

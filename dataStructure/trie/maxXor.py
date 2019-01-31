@@ -4,7 +4,7 @@
 # File : maxXor.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-12-22  09:51
 # Description:

@@ -4,7 +4,7 @@
 # File : mapSum.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-12-14  23:11
 # Description: 

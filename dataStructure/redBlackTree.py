@@ -3,7 +3,7 @@
 # File : redBlackTree.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-07-14  16:15
 # Description:

@@ -3,7 +3,7 @@
 # File : interplotion.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-10-02  21:14
 # Description:
@@ -14,7 +14,7 @@
 # File : interplotion.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.github.io
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-05-18  09:29
 # Description: 插值计算,有牛顿插值,拉格朗日插值,以及通过插值得到的多项式估计新的函数值

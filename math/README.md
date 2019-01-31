@@ -1,5 +1,5 @@
 # Number Theory
->See more details on [my blog](https://mbinary.coding.me/number-theory.html)
+>See more details on [my blog](https://mbinary.xyz/number-theory.html)
 
 ## gcd.py
 - gcd(a,b)

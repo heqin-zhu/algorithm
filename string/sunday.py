@@ -3,7 +3,7 @@
 # File : sunday.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-07-11  15:26
 # Description: 字符串模式匹配, sunday 算法, kmp 的改进

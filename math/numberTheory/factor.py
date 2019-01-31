@@ -4,7 +4,7 @@
 # File : factorize.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-12-16  09:36
 # Description: factorization, using pollard's rho algorithm and miller-rabin primality test

@@ -3,7 +3,7 @@
 # File : linear_equation.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-10-02  21:14
 # Description:
@@ -15,7 +15,7 @@
     > File Name: doolittle.py
     > Author: mbinary
     > Mail: zhuheqin1@gmail.com 
-    > Blog: https://mbinary.github.io
+    > Blog: https://mbinary.xyz
     > Created Time: 2018-04-20  08:32
  ************************************************************************'''
 

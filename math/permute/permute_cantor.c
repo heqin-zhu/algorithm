@@ -3,7 +3,7 @@
 # File : permute_cantor.c
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-11-17  11:25
 # Description:

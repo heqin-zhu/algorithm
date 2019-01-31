@@ -52,7 +52,7 @@ description:
 性质:
 $h\leq \left\lfloor \log _{d}\left({\frac {n+1}{2}}\right)\right\rfloor .$
 
-如下是 度为2的 B 树, 每个结点可能有2,3或4 个孩子, 所以也叫 2,3,4树, 等价于[红黑树](https://mbinary.coding.me/red-black-tree.html#more)
+如下是 度为2的 B 树, 每个结点可能有2,3或4 个孩子, 所以也叫 2,3,4树, 等价于[红黑树](https://mbinary.xyz/red-black-tree.html#more)
 ![](https://upload-images.jianshu.io/upload_images/7130568-30342360fb9674b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 <a id="markdown-3-查找操作" name="3-查找操作"></a>

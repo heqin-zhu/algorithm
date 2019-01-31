@@ -3,7 +3,7 @@
 # File : huffman.cc
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-04-25  22:32
 # Description:

@@ -3,7 +3,7 @@
 # File : least_square.py
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-10-02  21:14
 # Description:
@@ -15,7 +15,7 @@
     > Author: mbinary
     > Mail: zhuheqin1@gmail.com 
     > Created Time: Sat 07 Apr 2018 09:55:25 PM DST
-    > Blog: https://mbinary.github.io
+    > Blog: https://mbinary.xyz
     > Description: 最小二乘法解线性方程组, 解矛盾方程组
  ************************************************************************'''
 

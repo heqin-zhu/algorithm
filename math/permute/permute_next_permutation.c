@@ -3,7 +3,7 @@
 # File : permute_next_permutation.c
 # Author: mbinary
 # Mail: zhuheqin1@gmail.com
-# Blog: https://mbinary.coding.me
+# Blog: https://mbinary.xyz
 # Github: https://github.com/mbinary
 # Created Time: 2018-11-17  14:31
 # Description: support duplicate values. 

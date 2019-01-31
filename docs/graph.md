@@ -75,7 +75,7 @@ description:
 
 <a id="markdown-13-树" name="13-树"></a>
 ## 1.3. 树
-无圈连通图, $E = V-1$, 详细见[树](https://mbinary.coding.me/tree.html), 
+无圈连通图, $E = V-1$, 详细见[树](https://mbinary.xyz/tree.html), 
 
 <a id="markdown-2-搜索" name="2-搜索"></a>
 # 2. 搜索
@@ -196,7 +196,7 @@ while not que.isempty():
     * 设置结点的 minAdjEdge, 需要$O(lgv)$, 循环 E 次,则 总共$O(ElgV)$
 
 综上, 时间复杂度为$O(ElgV)$
-如果使用的是 [斐波那契堆](https://mbinary.coding.me/fib-heap.html), 则可改进到 $O(E+VlgV)$
+如果使用的是 [斐波那契堆](https://mbinary.xyz/fib-heap.html), 则可改进到 $O(E+VlgV)$
 
 <a id="markdown-4-单源最短路" name="4-单源最短路"></a>
 # 4. 单源最短路

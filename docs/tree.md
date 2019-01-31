@@ -215,7 +215,7 @@ Aho-Corasick automation,是在字典树上添加匹配失败边(失配指针), �
 
 <a id="markdown-54-treap" name="54-treap"></a>
 ## 5.4. treap
-[前面提到](#21-随机构造的二叉查找树), 随机构造的二叉查找树高度为 $h=O(logn)$,以及在[算法 general](https://mbinary.coding.me/alg-genral.html) 中说明了怎样 随机化(shuffle)一个给定的序列.
+[前面提到](#21-随机构造的二叉查找树), 随机构造的二叉查找树高度为 $h=O(logn)$,以及在[算法 general](https://mbinary.xyz/alg-genral.html) 中说明了怎样 随机化(shuffle)一个给定的序列.
 
 所以,为了得到一个平衡的二叉排序树,我们可以将给定的序列随机化, 然后再进行构造二叉排序树.
 
