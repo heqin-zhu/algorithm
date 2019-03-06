@@ -88,7 +88,21 @@ class primeSieve:
                     if i%j==0:break
                 else:lst.append(i)
             self.primes+=lst
-        return twoDivideFind(x,lst)
+            return twoDivideFind(x,lst)
+    def nPrime(n):
+        '''return the n-th prime'''
+        i=n-len(self.primes)
+        last = self.primes[-1]
+        for _ in range(i):
+            while 1:
+                last +=2
+                for p in self.primes:
+                    if last%p==0:
+                        break
+                else:
+                    self.primes.append(last)
+                    break
+        return self.primes[n-1]
 
 def twoDivideFind(x,li):
     a,b = 0, len(li)

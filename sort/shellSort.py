@@ -10,15 +10,26 @@
 #########################################################################
 '''
 
-def shellSort(s,inc=None):
-    if inc is None:inc = [1,3,5,7,11,13,17,19]
-    num = len(s)
-    inc.sort(reverse=True)
-    for i in inc:
-        for j in range(i,num):
+def shellSort(s,gaps=None):
+    if gaps is None:
+        gaps = [127,63,31,15,7,3,1]
+    n = len(s)
+    for gap in gaps:
+        for j in range(gap,n):
             cur = j
-            while cur>=i and s[j] > s[cur-i]:
-                s[cur] = s[cur-i]
-                cur-=i
-            s[cur] = s[j]
+            num = s[j]
+            while cur>=gap and num < s[cur-gap]:
+                s[cur] = s[cur-gap]
+                cur-=gap
+            s[cur] = num
     return s
+
+if __name__=='__main__':
+    from random import randint
+    import sys
+    n = 20
+    if len(sys.argv)>1:
+        n = int(sys.argv[1])
+    nums = [randint(1,100) for i in range(n)]
+    print(nums)
+    print(shellSort(nums))

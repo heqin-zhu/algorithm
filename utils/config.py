@@ -6,6 +6,7 @@ README = r'''
 [![repo-size](https://img.shields.io/github/repo-size/mbinary/algorithm-in-python.svg)]()
 [![License](https://img.shields.io/badge/LICENSE-WTFPL-blue.svg)](LICENSE)
 [![Language](https://img.shields.io/badge/language-python3-orange.svg)]()
+[![codebeat badge](https://codebeat.co/badges/4ef725b5-405a-4390-a860-a86deefab3f8)](https://codebeat.co/projects/github-com-mbinary-algorithm-in-python-master)
 <!-- [![Build](https://travis-ci.org/mbinary/PL0-compiler.svg?branch=master)]() -->
 
 >Notes and codes for learning algorithm and data structures :smiley:
