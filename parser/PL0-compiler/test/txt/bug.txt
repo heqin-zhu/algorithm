@@ -1,0 +1,16 @@
+func fib(n)
+begin
+    if n=1 || n=2  return 1;
+    return fib(n-1) +fib(n-2);
+end ; 
+
+var n=1;
+begin
+    while n<15 do
+    begin
+        print ('The ',n,'th fib item is:',fib(n)); 
+        n :=n+1; 
+    end; 
+
+end
+.

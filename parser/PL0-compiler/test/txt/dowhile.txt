@@ -1,0 +1,11 @@
+var n=1;
+begin
+    do
+    begin
+        print('%d',n);
+        n:=n+1;
+    end
+    while n<30;
+    print('zhqnb')
+end
+.

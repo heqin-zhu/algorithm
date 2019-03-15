@@ -1,0 +1,17 @@
+
+// expression
+var a=3,b=2,c;.
+ c:=a+1.
+begin c; c+1!=1 ; c+1=5 end.
+for(;b>=0;b:=b-1) print('random(100): %d',random(100)) .
+begin ++1--1; 1<<2+3%2; 2&1 end.
+  -1+2*3/%2.
+   (1+2.
+4!!.
+
+if   0 then 1
+elif 1>2 then 2
+elif false then 3
+else 4.
+
+

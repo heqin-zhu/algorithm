@@ -1,0 +1,26 @@
+digraph G{
+    nodesep=.05;
+    rankdir=LR;
+    node [shape=record,width=.1,height=.1];
+    subgraph cluster_1{
+        node1[label="{SL|DL|RA}|...|{SL2|DL2|RA2}|...|ret-val"]
+        "reg: "[shape=ellipse]
+    }
+    subgraph cluster_2{
+        node2[label="{SL|DL|RA}|...|{SL2|DL2|RA2}|..."]
+        "reg: ret-val"[shape=ellipse]
+    }
+    subgraph cluster_3{
+        node3[label="{SL|DL|RA}|..."]
+        "reg: ret-val "[shape=ellipse]
+    }
+    subgraph cluster_4{
+        node4[label="{SL|DL|RA}|...|ret-val"]
+        "reg: ret-val  "[shape=ellipse]
+    }
+    node1 -> node2 [color="red",label="POP",ltail=cluster_1, lhead=cluster_2];
+    node2 -> node3 [color="red",label="RET",ltail=cluster_2, lhead=cluster_3];
+    node3 -> node4 [color="red",label="PUSH",ltail=cluster_3, lhead=cluster_4];
+    
+}
+    

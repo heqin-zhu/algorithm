@@ -1,0 +1,10 @@
+digraph G{
+    nodesep=.05;
+    rankdir=LR;
+    node [shape=record,width=.1,height=.1];
+    node0[label="{SL1|DL1|RA1}|...|<v1>val1|<v2>val2|{SL2|DL2|RA2}|<a1>arg1|<a2>arg2"]
+    node0:a1->node0:v1;
+    node0:a2->node0:v2;
+    
+}
+    

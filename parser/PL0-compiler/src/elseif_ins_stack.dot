@@ -1,0 +1,19 @@
+digraph G {
+    compound =true
+    nodesep=.05;
+    rankdir=LR;
+    node [shape=record,width=.1,height=.1];
+    subgraph cluster_stack{
+        label = "instructions stack"
+        node0 [label = "<f0>cond1 |<f1> JPC|<f2>expr1 |<f3> JMP|<f4>cond2 |<f5> JPC|<f6>expr2 | <f7>JMP|<f8> expr3|<f9> ...",height=2.5];
+        node0:f1 -> node0:f4;
+        node0:f3 -> node0:f9;
+        node0:f5 -> node0:f8;
+        node0:f7 -> node0:f9;
+    }
+    subgraph cluster_elseif{
+        label = "program sentences"
+        node1 [label = "<f0>if cond1 |<f1>then expr1|<f2>elseif cond2 |<f3> then expr2|<f4>else expr3| ...",height=2.5];
+    }
+    node1 -> node0 [color ="white" ,ltail=cluster_stack, lhead=cluster_elseif];
+}

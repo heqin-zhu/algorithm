@@ -1,0 +1,12 @@
+func f(n)
+begin
+    if n=1 then return 1;
+    return n*f(n-1); 
+end;
+
+var a;
+begin 
+    a:=f(10);
+    print('factorial 10 is %d',a);
+end
+.

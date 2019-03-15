@@ -1,0 +1,10 @@
+func f(n)
+    print('squre of %d is %d',n,n*n); 
+var n=-2;
+while n<3 do begin
+    switch  n
+        case 0:f(n)
+        case 1,-1:f(n)
+        case 2,0-2:f(n) ; 
+    n:=n+1;
+end.

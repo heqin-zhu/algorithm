@@ -1,0 +1,17 @@
+digraph G {
+    rankdir=LR;
+    node [shape=record,width=.1,height=.1];
+    subgraph cluster_elseif{
+        label = "program sentences"
+        node1 [label = "<f0>while cond |<f1>...|<f2>break |<f3> ...|<f4>outer while",height=2.5];
+    }
+    subgraph cluster_stack{
+        label = "instructions stack"
+        node0 [label = "<f0>cond |<f1> JPC|<f2>... |<f3> JMP|<f4>...|<f5> JMP|<f6> outer while",height=2.5];
+        node0:f1 -> node0:f6;
+        node0:f3 -> node0:f6;
+        node0:f5 -> node0:f0;
+    }
+
+     node1:f2->node0:f3 [color=red]
+}

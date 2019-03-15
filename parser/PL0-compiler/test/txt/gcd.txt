@@ -1,0 +1,38 @@
+
+// a program
+const n=3;
+var r,x,n16;
+func multiply(a,b)
+var c,d;
+begin
+    c:=0;
+    while 1 do
+    begin
+        if b<=0 then break; 
+        if odd b then c:= c+a;
+        a:=2 * a; b:=b/%2;
+    end;
+    return c;
+end;
+
+// comment here
+func gcd(f,g)
+begin
+    for(;f!=g;)
+    begin
+        if f<g then g:=g-f
+        elif g<f then f:= f-g
+        else continue; 
+    end;
+    return g;
+end; 
+
+begin
+    
+    if 0 then 1
+    elif 0 then 1
+    else r:=n16:=3! >5 ? 2^4:1 ;
+    x:=multiply(4,n); 
+    r:=gcd(multiply(4,n),multiply(1,n16)); ; ;
+    print('r=%d,x=%d,n16=%d ',r,x,n16)
+end.
