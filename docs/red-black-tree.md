@@ -370,7 +370,7 @@ def find(root,i):
 <a id="markdown-6-python-代码" name="6-python-代码"></a>
 # 6. python 代码
 
-**[github地址](https://github.com/mbinary/algorithm-in-python.git)**
+**[github地址](https://github.com/mbinary/algorithm.git)**
 
 我用了 setChild, getChild 来简化代码量, 其他的基本上是按照算法导论上的伪代码提到的case 来实现的. 然后display 只是测试的时候,为了方便调试而层序遍历打印出来
 
