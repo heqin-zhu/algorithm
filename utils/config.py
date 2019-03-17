@@ -15,9 +15,7 @@ Some pictures and ideas are from `<<Introduction to Algotithm>>`
 
 I use python 3.6+ and c/c++ to implement them.
 
-# Notice
-Currently, Github can't render latex math formulas.Thus,if you want to view the markodwn notes which contain latex math formulas, you can visit [my blog](https://mbinary.xyz)
-
+[Click here](https://mbinary.xyz/algorithm/) to view notes
 # Index
 {index}
 '''

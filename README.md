@@ -6,6 +6,7 @@
 [![repo-size](https://img.shields.io/github/repo-size/mbinary/algorithm.svg)]()
 [![License](https://img.shields.io/badge/LICENSE-WTFPL-blue.svg)](LICENSE)
 [![Language](https://img.shields.io/badge/language-python3-orange.svg)]()
+[![codebeat badge](https://codebeat.co/badges/4ef725b5-405a-4390-a860-a86deefab3f8)](https://codebeat.co/projects/github-com-mbinary-algorithm-master)
 <!-- [![Build](https://travis-ci.org/mbinary/PL0-compiler.svg?branch=master)]() -->
 
 >Notes and codes for learning algorithm and data structures :smiley:
@@ -14,12 +15,12 @@ Some pictures and ideas are from `<<Introduction to Algotithm>>`
 
 I use python 3.6+ and c/c++ to implement them.
 
-
-[Click here](https://mbinary.xyz/alogrithm) to view notes
+[Click here](https://mbinary.xyz/algorithm/) to view notes
 # Index
 * [.](.)
     * [LICENSE](./LICENSE)
     * [README.md](./README.md)
+    * [_config.yml](./_config.yml)
     * [backtracking](./backtracking)
     * [dataStructure](./dataStructure)
         * [allOone](./dataStructure/allOone)
@@ -48,6 +49,7 @@ I use python 3.6+ and c/c++ to implement them.
         * [min_distance_of_n_points.py](./divideAndConquer/min_distance_of_n_points.py)
     * [docs](./docs)
         * [README.md](./docs/README.md)
+        * [_config.yml](./docs/_config.yml)
         * [algorithm-general.md](./docs/algorithm-general.md)
         * [b-tree.md](./docs/b-tree.md)
         * [fib-heap.md](./docs/fib-heap.md)
@@ -68,14 +70,20 @@ I use python 3.6+ and c/c++ to implement them.
         * [testVec2d.hs](./dynamicProgramming/testVec2d.hs)
         * [wildcard_matching.py](./dynamicProgramming/wildcard_matching.py)
     * [graph](./graph)
+        * [cloneGraph.cpp](./graph/cloneGraph.cpp)
         * [isBipartGraph.py](./graph/isBipartGraph.py)
     * [math](./math)
         * [README.md](./math/README.md)
         * [convertWeight.py](./math/convertWeight.py)
         * [fastPow.py](./math/fastPow.py)
+        * [fibonacci](./math/fibonacci)
         * [numberTheory](./math/numberTheory)
         * [numericalAnalysis](./math/numericalAnalysis)
         * [permute](./math/permute)
+    * [parser](./parser)
+        * [PL0-compiler](./parser/PL0-compiler)
+        * [calculator](./parser/calculator)
+        * [declarationParser](./parser/declarationParser)
     * [search](./search)
         * [8Astar.py](./search/8Astar.py)
         * [BFS_knight.hs](./search/BFS_knight.hs)
@@ -102,6 +110,7 @@ I use python 3.6+ and c/c++ to implement them.
         * [sunday.py](./string/sunday.py)
         * [wildcard_matching.py](./string/wildcard_matching.py)
     * [utils](./utils)
+        * [codecogs.py](./utils/codecogs.py)
         * [config.py](./utils/config.py)
         * [genReadme.py](./utils/genReadme.py)
         * [headinfo.py](./utils/headinfo.py)
