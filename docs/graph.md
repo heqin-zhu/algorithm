@@ -58,15 +58,15 @@ description:
 * 重边
 * 环
 * 完全图: 所有顶都相邻
-* 二分图: $V(G) = X \cup Y, X\cap Y = \varnothing$, X中, Y 中任两顶不相邻
+* 二分图: ![](https://latex.codecogs.com/gif.latex?V(G)&space;=&space;X&space;\cup&space;Y,&space;X\cap&space;Y&space;=&space;\varnothing), X中, Y 中任两顶不相邻
 * 轨道
 * 圈
 <a id="markdown-111-性质" name="111-性质"></a>
 ### 1.1.1. 性质
-* $\sum_{v\in V} d(v) = 2|E|$
-* G是二分图 $\Leftrightarrow$ G无奇圈
+* ![](https://latex.codecogs.com/gif.latex?\sum_{v\in&space;V}&space;d(v)&space;=&space;2|E|)
+* G是二分图 ![](https://latex.codecogs.com/gif.latex?\Leftrightarrow) G无奇圈
 * 树是无圈连通图
-* 树中, $|E| = |V| -1$
+* 树中, ![](https://latex.codecogs.com/gif.latex?|E|&space;=&space;|V|&space;-1)
 <a id="markdown-12-图的表示" name="12-图的表示"></a>
 ## 1.2. 图的表示
 * 邻接矩阵
@@ -75,7 +75,7 @@ description:
 
 <a id="markdown-13-树" name="13-树"></a>
 ## 1.3. 树
-无圈连通图, $E = V-1$, 详细见[树](https://mbinary.xyz/tree.html), 
+无圈连通图, ![](https://latex.codecogs.com/gif.latex?E&space;=&space;V-1), 详细见[树](https://mbinary.xyz/tree.html), 
 
 <a id="markdown-2-搜索" name="2-搜索"></a>
 # 2. 搜索
@@ -101,10 +101,10 @@ while que !=[]:
             v.isFind = True
             que.append(v)
 ```
-时间复杂度 $O(V+E)$
+时间复杂度 ![](https://latex.codecogs.com/gif.latex?O(V+E))
 <a id="markdown-22-dfs" name="22-dfs"></a>
 ## 2.2. DFS
-$\Theta(V+E)$
+![](https://latex.codecogs.com/gif.latex?\Theta(V+E))
 ```python
 def dfs(G):
     time = 0
@@ -128,7 +128,7 @@ def dfs(G):
 begin, end 分别是结点的发现时间与完成时间
 <a id="markdown-221-dfs-的性质" name="221-dfs-的性质"></a>
 ### 2.2.1. DFS 的性质
-* 其生成的前驱子图$G_{pre}$ 形成一个由多棵树构成的森林, 这是因为其与 dfsVisit 的递归调用树相对应
+* 其生成的前驱子图![](https://latex.codecogs.com/gif.latex?G_{pre}) 形成一个由多棵树构成的森林, 这是因为其与 dfsVisit 的递归调用树相对应
 * 括号化结构
 ![](https://upload-images.jianshu.io/upload_images/7130568-ba62e68e5b883b6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * 括号化定理:
@@ -144,7 +144,7 @@ begin, end 分别是结点的发现时间与完成时间
 <a id="markdown-24-强连通分量" name="24-强连通分量"></a>
 ## 2.4. 强连通分量
 在有向图中, 强连通分量中的结点互达
-定义 $Grev$ 为 $G$ 中所有边反向后的图
+定义 ![](https://latex.codecogs.com/gif.latex?Grev) 为 ![](https://latex.codecogs.com/gif.latex?G) 中所有边反向后的图
 
 将图分解成强连通分量的算法
 在 Grev 上根据 G 中结点的拓扑排序来 dfsVisit, 即
@@ -171,7 +171,7 @@ for  edge as u,v in sorted(G.E):
 return edges
 ```
 如果并查集的实现采用了 按秩合并与路径压缩技巧, 则 find 与 union 的时间接近常数
-所以时间复杂度在于排序边, 即 $O(ElgE)$, 而 $ E\< V^2 $, 所以 $lgE = O(lgV)$, 时间复杂度为  $O(ElgV)$ 
+所以时间复杂度在于排序边, 即 ![](https://latex.codecogs.com/gif.latex?O(ElgE)), 而 ![](https://latex.codecogs.com/gif.latex?E\<&space;V^2), 所以 ![](https://latex.codecogs.com/gif.latex?lgE&space;=&space;O(lgV)), 时间复杂度为  ![](https://latex.codecogs.com/gif.latex?O(ElgV)) 
 <a id="markdown-32-prim-算法" name="32-prim-算法"></a>
 ## 3.2. Prim 算法
 用了 BFS, 类似 Dijkstra 算法
@@ -189,25 +189,20 @@ while not que.isempty():
             v.pre = u
             v.minAdjEdge = w(u,v)
 ```
-* 建堆 $O(V)$ `//note it's v, not vlgv`
+* 建堆 ![](https://latex.codecogs.com/gif.latex?O(V)) `//note it's v, not vlgv`
 * 主循环中
-    * extractMin:  $O(VlgV)$
-    * in 操作 可以另设标志位, 在常数时间完成, 总共 $O(E)$
-    * 设置结点的 minAdjEdge, 需要$O(lgv)$, 循环 E 次,则 总共$O(ElgV)$
+    * extractMin:  ![](https://latex.codecogs.com/gif.latex?O(VlgV))
+    * in 操作 可以另设标志位, 在常数时间完成, 总共 ![](https://latex.codecogs.com/gif.latex?O(E))
+    * 设置结点的 minAdjEdge, 需要![](https://latex.codecogs.com/gif.latex?O(lgv)), 循环 E 次,则 总共![](https://latex.codecogs.com/gif.latex?O(ElgV))
 
-综上, 时间复杂度为$O(ElgV)$
-如果使用的是 [斐波那契堆](https://mbinary.xyz/fib-heap.html), 则可改进到 $O(E+VlgV)$
+综上, 时间复杂度为![](https://latex.codecogs.com/gif.latex?O(ElgV))
+如果使用的是 [斐波那契堆](https://mbinary.xyz/fib-heap.html), 则可改进到 ![](https://latex.codecogs.com/gif.latex?O(E+VlgV))
 
 <a id="markdown-4-单源最短路" name="4-单源最短路"></a>
 # 4. 单源最短路
 求一个结点到其他结点的最短路径, 可以用 Bellman-Ford算法, 或者 Dijkstra算法.  
 定义两个结点u,v间的最短路 
-$$
-\delta(u,v) = \begin{cases}
-min(w(path)),\quad u\xrightarrow{path} v\\
-MAX, \quad u\nrightarrow v
-\end{cases}
-$$
+![](https://latex.codecogs.com/gif.latex?&space;\delta(u,v)&space;=&space;\begin{cases}&space;min(w(path)),\quad&space;u\xrightarrow{path}&space;v\\&space;MAX,&space;\quad&space;u&space;rightarrow&space;v&space;\end{cases}&space;)
 问题的变体
 * 单目的地最短路问题: 可以将所有边反向转换成求单源最短路问题
 * 单结点对的最短路径
@@ -235,10 +230,10 @@ def relax(u,v,w):
          v.pre = u
 ```
 性质
-* 三角不等式: $\delta(s,v) \leqslant \delta(s,u) +  w(u,v)$
-* 上界: $v.distance \geqslant \delta(s,v)$
-* 收敛: 对于某些结点u,v  如果s->...->u->v是图G中的一条最短路径，并且在对边，进行松弛前任意时间有 $u.distance=\delta(s,u)$则在之后的所有时间有 $v.distance=\delta(s,v)$
-* 路径松弛性质: 如果$p=v_0 v_1 \ldots v_k$是从源结点下v0到结点vk的一条最短路径，并且对p中的边所进行松弛的次序为$(v_0,v_1),(v_1,v_2), \ldots ,(v_{k-1},v_k)$, 则 $v_k.distance = \delta(s,v_k)$
+* 三角不等式: ![](https://latex.codecogs.com/gif.latex?\delta(s,v)&space;\leqslant&space;\delta(s,u)&space;+&space;w(u,v))
+* 上界: ![](https://latex.codecogs.com/gif.latex?v.distance&space;\geqslant&space;\delta(s,v))
+* 收敛: 对于某些结点u,v  如果s->...->u->v是图G中的一条最短路径，并且在对边，进行松弛前任意时间有 ![](https://latex.codecogs.com/gif.latex?u.distance=\delta(s,u))则在之后的所有时间有 ![](https://latex.codecogs.com/gif.latex?v.distance=\delta(s,v))
+* 路径松弛性质: 如果![](https://latex.codecogs.com/gif.latex?p=v_0&space;v_1&space;\ldots&space;v_k)是从源结点下v0到结点vk的一条最短路径，并且对p中的边所进行松弛的次序为![](https://latex.codecogs.com/gif.latex?(v_0,v_1),(v_1,v_2),&space;\ldots&space;,(v_{k-1},v_k)), 则 ![](https://latex.codecogs.com/gif.latex?v_k.distance&space;=&space;\delta(s,v_k))
 该性质的成立与任何其他的松弛操作无关，即使这些松弛操作是与对p上的边所进行的松弛操作穿插进行的。
 
 证明
@@ -289,17 +284,13 @@ def dijkstra(G,s):
 <a id="markdown-51-矩阵乘法" name="51-矩阵乘法"></a>
 ## 5.1. 矩阵乘法
 使用动态规划算法, 可以得到最短路径的结构
-设 $l_{ij}^{(m)}$为从结点i 到结点 j 的至多包含 m 条边的任意路径的最小权重,当m = 0, 此时i=j, 则 为0,
+设 ![](https://latex.codecogs.com/gif.latex?l_{ij}^{(m)})为从结点i 到结点 j 的至多包含 m 条边的任意路径的最小权重,当m = 0, 此时i=j, 则 为0,
 可以得到递归定义 
- $$
-l_{ij}^{(m)} =\min( l_{ij}^{(m-1)}, \min_{1\leqslant k\leqslant n}( l_{ik}^{(m-1)}+w_{kj})) =  \min_{1\leqslant k\leqslant n}( l_{ik}^{(m-1)}+w_{kj})) 
-$$
+ ![](https://latex.codecogs.com/gif.latex?&space;l_{ij}^{(m)}&space;=\min(&space;l_{ij}^{(m-1)},&space;\min_{1\leqslant&space;k\leqslant&space;n}(&space;l_{ik}^{(m-1)}+w_{kj}))&space;=&space;\min_{1\leqslant&space;k\leqslant&space;n}(&space;l_{ik}^{(m-1)}+w_{kj}))&space;)
 由于是简单路径, 则包含的边最多为 |V|-1 条, 所以
-$$
-\delta(i,j) = l_{ij}^{(|V|-1)} = l_{ij}^{(|V|)} =l_{ij}^{(|V| + 1)}= ...
-$$
+![](https://latex.codecogs.com/gif.latex?&space;\delta(i,j)&space;=&space;l_{ij}^{(|V|-1)}&space;=&space;l_{ij}^{(|V|)}&space;=l_{ij}^{(|V|&space;+&space;1)}=&space;...&space;)
 所以可以自底向上计算, 如下
-输入权值矩阵 $W(w_{ij})),  L^{(m-1)}$,输出$ L^{(m)}$,  其中 $L^{(1)} = W$,
+输入权值矩阵 ![](https://latex.codecogs.com/gif.latex?W(w_{ij})),&space;L^{(m-1)}),输出![](https://latex.codecogs.com/gif.latex?L^{(m)}),  其中 ![](https://latex.codecogs.com/gif.latex?L^{(1)}&space;=&space;W),
 ```python
 n = L.rows
 L' = new matrix(nxn)
@@ -311,8 +302,8 @@ for i in range(n):
 return L'
 ```
 可以看出该算法与矩阵乘法的关系 
-$L^{(m)} = W^m$,
-所以可以直接计算乘法, 每次计算一个乘积是 $O(V^3)$, 计算 V 次, 所以总体 $O(V^4)$, 使用矩阵快速幂可以将时间复杂度降低为$O(V^3lgV)$
+![](https://latex.codecogs.com/gif.latex?L^{(m)}&space;=&space;W^m),
+所以可以直接计算乘法, 每次计算一个乘积是 ![](https://latex.codecogs.com/gif.latex?O(V^3)), 计算 V 次, 所以总体 ![](https://latex.codecogs.com/gif.latex?O(V^4)), 使用矩阵快速幂可以将时间复杂度降低为![](https://latex.codecogs.com/gif.latex?O(V^3lgV))
 ```python
 def f(W):
     L = W
@@ -326,28 +317,13 @@ def f(W):
 <a id="markdown-52-floyd-warshall-算法" name="52-floyd-warshall-算法"></a>
 ## 5.2. Floyd-Warshall 算法
 同样要求可以存在负权边, 但不能有负值圈. 用动态规划算法:
-设 $ d_{ij}^{(k)}$ 为 从 i 到 j 所有中间结点来自集合 ${\{1,2,\ldots,k\}}$ 的一条最短路径的权重. 则有
-$$
-d_{ij}^{(k)} = \begin{cases}
-w_{ij},\quad k=0\\
-min(d_{ij}^{(k-1)},d_{ik}^{(k-1)}+d_{kj}^{(k-1)}),\quad k\geqslant 1
-\end{cases}
-$$
-而且为了找出路径, 需要记录前驱结点, 定义如下前驱矩阵 $\Pi$, 设 $ \pi_{ij}^{(k)}$ 为 从 i 到 j 所有中间结点来自集合 ${\{1,2,\ldots,k\}}$ 的最短路径上 j 的前驱结点
+设 ![](https://latex.codecogs.com/gif.latex?d_{ij}^{(k)}) 为 从 i 到 j 所有中间结点来自集合 ![](https://latex.codecogs.com/gif.latex?{\{1,2,\ldots,k\}}) 的一条最短路径的权重. 则有
+![](https://latex.codecogs.com/gif.latex?&space;d_{ij}^{(k)}&space;=&space;\begin{cases}&space;w_{ij},\quad&space;k=0\\&space;min(d_{ij}^{(k-1)},d_{ik}^{(k-1)}+d_{kj}^{(k-1)}),\quad&space;k\geqslant&space;1&space;\end{cases}&space;)
+而且为了找出路径, 需要记录前驱结点, 定义如下前驱矩阵 ![](https://latex.codecogs.com/gif.latex?\Pi), 设 ![](https://latex.codecogs.com/gif.latex?\pi_{ij}^{(k)}) 为 从 i 到 j 所有中间结点来自集合 ![](https://latex.codecogs.com/gif.latex?{\{1,2,\ldots,k\}}) 的最短路径上 j 的前驱结点
 则
-$$
-\pi_{ij}^{(0)} = \begin{cases}
-nil,\quad i=j \ or \ w_{ij}=MAX\\
-i, \quad i\neq j and \ w_{ij}<MAX
-\end{cases}
-$$
-对 $k\geqslant 1$
-$$
-\pi_{ij}^{(k)} = \begin{cases}
-\pi_{ij}^{(k-1)} ,\quad  d_{ij}^{(k-1)}\leqslant d_{ik}^{(k-1)}+d_{kj}^{(k-1)}\\
-\pi_{kj}^{(k-1)} ,\quad otherwise
-\end{cases}
-$$
+![](https://latex.codecogs.com/gif.latex?&space;\pi_{ij}^{(0)}&space;=&space;\begin{cases}&space;nil,\quad&space;i=j&space;\&space;or&space;\&space;w_{ij}=MAX\\&space;i,&space;\quad&space;i&space;eq&space;j&space;and&space;\&space;w_{ij}<MAX&space;\end{cases}&space;)
+对 ![](https://latex.codecogs.com/gif.latex?k\geqslant&space;1)
+![](https://latex.codecogs.com/gif.latex?&space;\pi_{ij}^{(k)}&space;=&space;\begin{cases}&space;\pi_{ij}^{(k-1)}&space;,\quad&space;d_{ij}^{(k-1)}\leqslant&space;d_{ik}^{(k-1)}+d_{kj}^{(k-1)}\\&space;\pi_{kj}^{(k-1)}&space;,\quad&space;otherwise&space;\end{cases}&space;)
 
 由此得出此算法
 ```python
@@ -373,7 +349,7 @@ return d,pre
 
 1. 首先构造一个新图 G'
   先将G拷贝到G', 再添加一个新结点 s, 添加 G.V条边, s 到G中顶点的, 权赋值为 0
-2. 用 Bellman-Ford 算法检查是否有负值圈, 如果没有, 同时求出 $\delta(s,v) 记为 h(v)$
+2. 用 Bellman-Ford 算法检查是否有负值圈, 如果没有, 同时求出 ![](https://latex.codecogs.com/gif.latex?\delta(s,v)&space;Recorded-as&space;h(v))
 3. 求新的非负值权, w'(u,v) = w(u,v)+h(u)-h(v)
 4. 对所有结点在 新的权矩阵w'上 用 Dijkstra 算法
 ![image.png](https://upload-images.jianshu.io/upload_images/7130568-6c2146ad64d692f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -404,28 +380,23 @@ return d
 <a id="markdown-6-最大流" name="6-最大流"></a>
 # 6. 最大流
 G 是弱连通严格有向加权图, s为源, t 为汇, 每条边e容量 c(e), 由此定义了网络N(G,s,t,c(e)),
-* 流函数 $f(e):E \rightarrow R$
-$$
-\begin{aligned}
-(1)\quad & 0\leqslant f(e) \leqslant c(e),\quad e \in E\\
-(2)\quad & \sum_{e\in \alpha(v)} f(e)= \sum_{e\in \beta(v)}f(e),\quad  v \in V-\{s,t\}
-\end{aligned}
-$$
-其中 $\alpha(v)$ 是以 v 为头的边集, $\beta(v)$是以 v 为尾的边集
-* 流量: $F =  \sum_{e\in \alpha(t)} f(e)- \sum_{e\in -\beta(t)}f(e),$
-* 截$(S,\overline S)$: $S\subset V,s\in S, t\in \overline S =V-S$
-* 截量$C(S) = \sum_{e\in(S,\overline S)}c(e)$
+* 流函数 ![](https://latex.codecogs.com/gif.latex?f(e):E&space;\rightarrow&space;R)
+![](https://latex.codecogs.com/gif.latex?&space;\begin{aligned}&space;(1)\quad&space;&&space;0\leqslant&space;f(e)&space;\leqslant&space;c(e),\quad&space;e&space;\in&space;E\\&space;(2)\quad&space;&&space;\sum_{e\in&space;\alpha(v)}&space;f(e)=&space;\sum_{e\in&space;\beta(v)}f(e),\quad&space;v&space;\in&space;V-\{s,t\}&space;\end{aligned}&space;)
+其中 ![](https://latex.codecogs.com/gif.latex?\alpha(v)) 是以 v 为头的边集, ![](https://latex.codecogs.com/gif.latex?\beta(v))是以 v 为尾的边集
+* 流量: ![](https://latex.codecogs.com/gif.latex?F&space;=&space;\sum_{e\in&space;\alpha(t)}&space;f(e)-&space;\sum_{e\in&space;-\beta(t)}f(e),)
+* 截![](https://latex.codecogs.com/gif.latex?(S,\overline&space;S)): ![](https://latex.codecogs.com/gif.latex?S\subset&space;V,s\in&space;S,&space;t\in&space;\overline&space;S&space;=V-S)
+* 截量![](https://latex.codecogs.com/gif.latex?C(S)&space;=&space;\sum_{e\in(S,\overline&space;S)}c(e))
 <a id="markdown-61-定理" name="61-定理"></a>
 ## 6.1. 定理
 参考 图论[^2]
-* 对于任一截$(S,\overline S)$, 有 $F =  \sum_{e\in (S,\overline S)} f(e)- \sum_{e\in(\overline S,S)}f(e),$
+* 对于任一截![](https://latex.codecogs.com/gif.latex?(S,\overline&space;S)), 有 ![](https://latex.codecogs.com/gif.latex?F&space;=&space;\sum_{e\in&space;(S,\overline&space;S)}&space;f(e)-&space;\sum_{e\in(\overline&space;S,S)}f(e),)
 ![prove](https://upload-images.jianshu.io/upload_images/7130568-19bf6cc3c7d6ce06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-* $F\leqslant C(S)$
+* ![](https://latex.codecogs.com/gif.latex?F\leqslant&space;C(S))
 证明: 由上面定理
- $$F =  \sum_{e\in (S,\overline S)} f(e)- \sum_{e\in(\overline S,S)}f(e),$$
-而 $0\leqslant f(e) \leqslant c(e)$, 则
-$$F\leqslant \sum_{e\in (S,\overline S)} f(e) \leqslant \sum_{e\in (S,\overline S)} c(e) = C(S) $$
-* 最大流,最小截: 若$F= C(S) $, 则F'是最大流量, C(S) 是最小截量
+ ![](https://latex.codecogs.com/gif.latex?F&space;=&space;\sum_{e\in&space;(S,\overline&space;S)}&space;f(e)-&space;\sum_{e\in(\overline&space;S,S)}f(e),)
+而 ![](https://latex.codecogs.com/gif.latex?0\leqslant&space;f(e)&space;\leqslant&space;c(e)), 则
+![](https://latex.codecogs.com/gif.latex?F\leqslant&space;\sum_{e\in&space;(S,\overline&space;S)}&space;f(e)&space;\leqslant&space;\sum_{e\in&space;(S,\overline&space;S)}&space;c(e)&space;=&space;C(S))
+* 最大流,最小截: 若![](https://latex.codecogs.com/gif.latex?F=&space;C(S)), 则F'是最大流量, C(S) 是最小截量
 <a id="markdown-62-多个源汇" name="62-多个源汇"></a>
 ## 6.2. 多个源,汇
 可以新增一个总的源,一个总的汇,

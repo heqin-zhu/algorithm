@@ -5,52 +5,23 @@
 ## Rabin-Karp
 We can view a string of k characters (digits) as a length-k decimal number.  E.g., the string “31425” corresponds to the decimal number 31,425.
 - Given a pattern P [1..m], let p denote the corresponding decimal value.
-- Given a text T [1..n], let $t_s$ denote the decimal value of the length-m substring  T [(s+1)..(s+m)] for s=0,1,…,(n-m).
-- let `d` be the radix of num, thus $d = len(set(s))$
-- $t_s$ = p iff T [(s+1)..(s+m)] = P [1..m].
+- Given a text T [1..n], let ![](https://latex.codecogs.com/gif.latex?t_s) denote the decimal value of the length-m substring  T [(s+1)..(s+m)] for s=0,1,…,(n-m).
+- let `d` be the radix of num, thus ![](https://latex.codecogs.com/gif.latex?d&space;=&space;len(set(s)))
+- ![](https://latex.codecogs.com/gif.latex?t_s) = p iff T [(s+1)..(s+m)] = P [1..m].
 - p can be computed in O(m) time. p = P[m] + d\*(P[m-1] + d\*(P[m-2]+…)).
 - t0 can similarly be computed in O(m) time.
-- Other $t_1,\ldots,t_{n-m}$ can be computed in O(n-m) time since $t_{s+1} can be computed from ts in constant time.
-Namely, 
-
-$$ 
+- Other ![](https://latex.codecogs.com/gif.latex?t_1,\ldots,t_{n-m}) can be computed in O(n-m) time since ![](https://latex.codecogs.com/gif.latex?t_{s+1}&space;can&space;be&space;computed&space;from&space;ts&space;in&space;constant&space;time.&space;Namely,&space;) 
 t_{s+1} = d*(t_s-d^{m-1} * T[s+1])+T[s+m+1]
-$$
-However, it's no need to calculate $t_{s+1}$ directly. We can use modulus operation to reduce the work of caculation.
-
-We choose a small prime number. Eg 13 for radix( noted as d) 10.
-Generally, d\*q should fit within one computer word.
-
-We firstly caculate t0 mod q.
-Then, for every $t_i (i>1)$
-assume
-$$
+![](https://latex.codecogs.com/gif.latex?&space;However,&space;it's&space;no&space;need&space;to&space;calculate)t_{s+1}![](https://latex.codecogs.com/gif.latex?directly.&space;We&space;can&space;use&space;modulus&space;operation&space;to&space;reduce&space;the&space;work&space;of&space;caculation.&space;We&space;choose&space;a&space;small&space;prime&space;number.&space;Eg&space;13&space;for&space;radix(&space;noted&space;as&space;d)&space;10.&space;Generally,&space;d\*q&space;should&space;fit&space;within&space;one&space;computer&space;word.&space;We&space;firstly&space;caculate&space;t0&space;mod&space;q.&space;Then,&space;for&space;every)t_i (i>1)![](https://latex.codecogs.com/gif.latex?&space;assume&space;)
  t_{i-1} = T[i+m-1] + 10*T[i+m-2]+\ldots+10^{m-1}*T[i-1]
-$$
-denote $ d' = d^{m-1}\ mod\ q$
-thus,
-$$
+![](https://latex.codecogs.com/gif.latex?&space;denote) d' = d^{m-1}\ mod\ q![](https://latex.codecogs.com/gif.latex?&space;thus,&space;)
 \begin{aligned}
 t_i &= (t_{i-1} - d^{m-1}*T[i-1]) * d + T[i+m]\\
 &\equiv (t_{i-1} - d^{m-1}*T[i-1]) * d + T[i+m] (mod\ q)\\
 &\equiv (t_{i-1}- ( d^{m-1} mod \ q) *T[i-1]) * d + T[i+m] (mod\ q)\\
 &\equiv (t_{i-1}- d'*T[i-1]) * d + T[i+m] (mod\ q)
 \end{aligned}
-$$
-
-So we can compare the modular value of each ti with p's.
-Only if they are the same, then we compare the origin chracter, namely $T[i],T[i+1],\ldots,T[i+m-1]$ and the pattern.
-Gernerally, this algorithm's time approximation is O(n+m), and the worst case is O((n-m+1)\*m)
-
-**Problem: this is assuming p and ts are small numbers. They may be too large to work with easily.**
-
-## FSM
-A FSM can be represented as (Q,q0,A,S,C), where
-- Q is the set of all states
-- q0 is the start state
-- $A\in Q$ is a set of accepting states.
-- S is a finite input alphabet.
-- C is the set of transition functions: namely  $q_j = c(s,q_i)$.
+![](https://latex.codecogs.com/gif.latex?&space;So&space;we&space;can&space;compare&space;the&space;modular&space;value&space;of&space;each&space;ti&space;with&space;p's.&space;Only&space;if&space;they&space;are&space;the&space;same,&space;then&space;we&space;compare&space;the&space;origin&space;chracter,&space;namely)T[i],T[i+1],\ldots,T[i+m-1]![](https://latex.codecogs.com/gif.latex?and&space;the&space;pattern.&space;Gernerally,&space;this&space;algorithm's&space;time&space;approximation&space;is&space;O(n+m),&space;and&space;the&space;worst&space;case&space;is&space;O((n-m+1)\*m)&space;**Problem:&space;this&space;is&space;assuming&space;p&space;and&space;ts&space;are&space;small&space;numbers.&space;They&space;may&space;be&space;too&space;large&space;to&space;work&space;with&space;easily.**&space;##&space;FSM&space;A&space;FSM&space;can&space;be&space;represented&space;as&space;(Q,q0,A,S,C),&space;where&space;-&space;Q&space;is&space;the&space;set&space;of&space;all&space;states&space;-&space;q0&space;is&space;the&space;start&space;state&space;-)A\in Q![](https://latex.codecogs.com/gif.latex?is&space;a&space;set&space;of&space;accepting&space;states.&space;-&space;S&space;is&space;a&space;finite&space;input&space;alphabet.&space;-&space;C&space;is&space;the&space;set&space;of&space;transition&space;functions:&space;namely)q_j = c(s,q_i)$.
 
 Given a pattern string S, we can build a FSM for string matching.
 Assume S has m chars, and there should be m+1 states. One is for the begin state, and the others are for matching state of each position of S.

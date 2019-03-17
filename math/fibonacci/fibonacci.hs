@@ -1,5 +1,4 @@
-:{
-''' mbinary
+{-''' mbinary
 #######################################################################
 # File : fibonacci.hs
 # Author: mbinary
@@ -10,7 +9,7 @@
 # Description: matrix pow and fast pow:
     calculate big number fibonacci item. for negative item, use f(n) = f(n+2)-f(n+1)
 #######################################################################
-:}
+-}
 module Fibonacci where
 
 fib :: Integer -> Integer
