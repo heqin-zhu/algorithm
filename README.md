@@ -7,15 +7,24 @@
 [![License](https://img.shields.io/badge/LICENSE-WTFPL-blue.svg)](LICENSE)
 [![Language](https://img.shields.io/badge/language-python3-orange.svg)]()
 [![codebeat badge](https://codebeat.co/badges/4ef725b5-405a-4390-a860-a86deefab3f8)](https://codebeat.co/projects/github-com-mbinary-algorithm-master)
-<!-- [![Build](https://travis-ci.org/mbinary/PL0-compiler.svg?branch=master)]() -->
 
 >Notes and codes for learning algorithm and data structures :smiley:
 
 Some pictures and ideas are from `<<Introduction to Algotithm>>`
 
-I use python 3.6+ and c/c++ to implement them.
+# Notes
+* [docs](./docs)
+    * [algorithm-general.md](./docs/algorithm-general.md)
+    * [b-tree.md](./docs/b-tree.md)
+    * [fib-heap.md](./docs/fib-heap.md)
+    * [graph.md](./docs/graph.md)
+    * [hashTable.md](./docs/hashTable.md)
+    * [red-black-tree.md](./docs/red-black-tree.md)
+    * [sort.md](./docs/sort.md)
+    * [src](./docs/src)
+    * [string-matching.md](./docs/string-matching.md)
+    * [tree.md](./docs/tree.md)
 
-[Click here](https://mbinary.xyz/algorithm/) to view notes
 # Index
 * [.](.)
     * [LICENSE](./LICENSE)
@@ -47,19 +56,6 @@ I use python 3.6+ and c/c++ to implement them.
         * [winnerTree.py](./dataStructure/winnerTree.py)
     * [divideAndConquer](./divideAndConquer)
         * [min_distance_of_n_points.py](./divideAndConquer/min_distance_of_n_points.py)
-    * [docs](./docs)
-        * [README.md](./docs/README.md)
-        * [_config.yml](./docs/_config.yml)
-        * [algorithm-general.md](./docs/algorithm-general.md)
-        * [b-tree.md](./docs/b-tree.md)
-        * [fib-heap.md](./docs/fib-heap.md)
-        * [graph.md](./docs/graph.md)
-        * [hashTable.md](./docs/hashTable.md)
-        * [red-black-tree.md](./docs/red-black-tree.md)
-        * [sort.md](./docs/sort.md)
-        * [src](./docs/src)
-        * [string-matching.md](./docs/string-matching.md)
-        * [tree.md](./docs/tree.md)
     * [dynamicProgramming](./dynamicProgramming)
         * [Vec2d.hs](./dynamicProgramming/Vec2d.hs)
         * [lcs.py](./dynamicProgramming/lcs.py)

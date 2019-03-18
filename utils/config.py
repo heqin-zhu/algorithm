@@ -7,15 +7,12 @@ README = r'''
 [![License](https://img.shields.io/badge/LICENSE-WTFPL-blue.svg)](LICENSE)
 [![Language](https://img.shields.io/badge/language-python3-orange.svg)]()
 [![codebeat badge](https://codebeat.co/badges/4ef725b5-405a-4390-a860-a86deefab3f8)](https://codebeat.co/projects/github-com-mbinary-algorithm-master)
-<!-- [![Build](https://travis-ci.org/mbinary/PL0-compiler.svg?branch=master)]() -->
 
 >Notes and codes for learning algorithm and data structures :smiley:
 
 Some pictures and ideas are from `<<Introduction to Algotithm>>`
 
-I use python 3.6+ and c/c++ to implement them.
-
-[Click here](https://mbinary.xyz/algorithm/) to view notes
+[Click here](./docs) to view notes
 # Index
 {index}
 '''
