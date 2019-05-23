@@ -10,7 +10,7 @@
 #########################################################################
 '''
 
-from allOone import AllOne
+from allOne import allOne
 from time import time
 from  random import choice,sample,randint
 
@@ -49,12 +49,18 @@ def testCase(n=1000):
 def test(repeat=100):
     t1,t2=0,0
     for i in range(repeat):
-        allOne = AllOne()
+        obj = allOne()
+        operate = {
+            "inc": obj.inc,
+            "dec": obj.dec,
+            "getMaxKey": obj.getMaxKey,
+            "getMinKey": obj.getMinKey
+        }
         hsmp = hashMap()
         ops,data = testCase()
         t1-=time()
         for op,datum in zip(ops,data):
-            allOne.op[op](*datum)
+            operate[op](*datum)
         t1+=time()
 
         t2-=time()
@@ -66,5 +72,5 @@ def test(repeat=100):
 
 if __name__=='__main__':
     t1,t2= test()
-    print(f'allOone: {t1}')
+    print(f'allOne: {t1}')
     print(f'hashmap: {t2}')
