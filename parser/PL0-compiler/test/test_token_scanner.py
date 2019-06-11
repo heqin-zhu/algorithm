@@ -1,3 +1,14 @@
+''' mbinary
+#########################################################################
+# File : test_token_scanner.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.xyz
+# Github: https://github.com/mbinary
+# Created Time: 2019-04-16  09:41
+# Description:
+#########################################################################
+'''
 import unittest
 from token_scanner import gen_token
 

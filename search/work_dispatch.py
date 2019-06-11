@@ -1,3 +1,14 @@
+''' mbinary
+#########################################################################
+# File : work_dispatch.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.xyz
+# Github: https://github.com/mbinary
+# Created Time: 2019-04-16  09:41
+# Description:
+#########################################################################
+'''
 '''
 设有n件工作要分配给n个人去完成，将工作i分配给第j个人所需费用为c_ij 。试设计一个算法，为每个人分配1件不同的工作，并使总费用达到最小。
 '''

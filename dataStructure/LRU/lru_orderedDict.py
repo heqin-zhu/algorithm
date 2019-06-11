@@ -1,3 +1,14 @@
+''' mbinary
+#########################################################################
+# File : lru_orderedDict.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.xyz
+# Github: https://github.com/mbinary
+# Created Time: 2019-05-23  20:13
+# Description:
+#########################################################################
+'''
 class LRUCache(object):
 
     def __init__(self, capacity):

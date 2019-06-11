@@ -1,3 +1,14 @@
+''' mbinary
+#########################################################################
+# File : nega.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.xyz
+# Github: https://github.com/mbinary
+# Created Time: 2019-06-02  23:15
+# Description:
+#########################################################################
+'''
 def nega(n:int,base=-2:int)->:list:
     '''return list of num, the first is the highest digit'''
     if base>-2:

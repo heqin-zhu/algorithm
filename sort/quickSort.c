@@ -1,3 +1,14 @@
+/* mbinary
+#########################################################################
+# File : quickSort.c
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.xyz
+# Github: https://github.com/mbinary
+# Created Time: 2019-04-16  09:41
+# Description:
+#########################################################################
+*/
 int partition(int *arr,int i,int j)
 {
     int pivot = arr[j],p=i,q=j;

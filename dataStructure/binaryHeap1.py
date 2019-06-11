@@ -1,3 +1,14 @@
+''' mbinary
+#########################################################################
+# File : binaryHeap1.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.xyz
+# Github: https://github.com/mbinary
+# Created Time: 2019-04-16  09:41
+# Description:
+#########################################################################
+'''
 from functools import partial
 class heap:
     def __init__(self,lst,reverse = False):

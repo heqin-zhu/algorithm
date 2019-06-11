@@ -1,3 +1,14 @@
+''' mbinary
+#########################################################################
+# File : codecogs.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.xyz
+# Github: https://github.com/mbinary
+# Created Time: 2019-04-16  09:41
+# Description:
+#########################################################################
+'''
 import os
 import re
 import sys

@@ -1,3 +1,14 @@
+''' mbinary
+#########################################################################
+# File : lru_allone.py
+# Author: mbinary
+# Mail: zhuheqin1@gmail.com
+# Blog: https://mbinary.xyz
+# Github: https://github.com/mbinary
+# Created Time: 2019-05-23  23:50
+# Description:
+#########################################################################
+'''
 from allOne import  allOne
 
 '''In this implementation, the lru doesn't use some funcs of allOne,
