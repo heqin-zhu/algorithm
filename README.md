@@ -6,8 +6,7 @@
 [![repo-size](https://img.shields.io/github/repo-size/mbinary/algorithm.svg)]()
 [![License](https://img.shields.io/badge/LICENSE-WTFPL-blue.svg)](LICENSE)
 [![Language](https://img.shields.io/badge/language-python3-orange.svg)]()
-[![codebeat badge](https://codebeat.co/badges/4ef725b5-405a-4390-a860-a86deefab3f8)](https://codebeat.co/projects/github-com-mbinary-algorithm-master)
-
+[![codebeat badge](https://codebeat.co/badges/d52dd17d-a437-4dee-a6ec-cb532e8135bd)](https://codebeat.co/projects/github-com-mbinary-algorithm-master)
 >Notes and codes for learning algorithm and data structures :smiley:
 
 Some pictures and ideas are from `<<Introduction to Algotithm>>`
