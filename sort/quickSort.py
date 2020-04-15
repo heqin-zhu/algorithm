@@ -11,6 +11,9 @@
 '''
 
 
+from time import time
+
+
 def quickSort(lst):
     '''A optimized version of Hoare partition'''
 
@@ -31,7 +34,8 @@ def quickSort(lst):
         return a
 
     def _sort(a, b):
-        if a >= b: return
+        if a >= b:
+            return
         mid = (a + b) // 2
         # 三数取中值置于第一个作为 pivot
         if (lst[a] < lst[mid]) ^ (lst[b] < lst[mid]):
@@ -55,12 +59,14 @@ def quickSort2(lst):
         for i in range(a, b):
             if lst[i] <= pivot:
                 j += 1
-                if i != j: lst[i], lst[j] = lst[j], lst[i]
+                if i != j:
+                    lst[i], lst[j] = lst[j], lst[i]
         lst[j + 1], lst[b] = lst[b], lst[j + 1]
         return j + 1
 
     def _sort(a, b):
-        if a >= b: return
+        if a >= b:
+            return
         mid = (a + b) // 2
         # 三数取中值置于第一个作为 pivot
         if (lst[a] < lst[mid]) ^ (lst[b] < lst[mid]):
@@ -84,7 +90,8 @@ def quickSort3(lst):
         for i in range(a, b):
             if lst[i] <= pivot:
                 j += 1
-                if i != j: lst[i], lst[j] = lst[j], lst[i]
+                if i != j:
+                    lst[i], lst[j] = lst[j], lst[i]
         lst[j + 1], lst[b] = lst[b], lst[j + 1]
         return j + 1
 
@@ -102,9 +109,6 @@ def quickSort3(lst):
 
     _sort(0, len(lst) - 1)
     return lst
-
-
-from time import time
 
 
 def timer(func, lst, n=100):

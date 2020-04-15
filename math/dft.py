@@ -54,7 +54,7 @@ def _fft2(a, invert=False):
     N = len(a)
     if N & (N - 1) == 0:  # O(nlogn),  2^k
         r = int(np.log(N))
-        c = np.array(a,dtype='complex')
+        c = np.array(a, dtype='complex')
         i = 2j if invert else -2j
         w = np.exp(i * np.pi / N)
         for h in range(r - 1, -1, -1):

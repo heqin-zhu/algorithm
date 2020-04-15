@@ -33,25 +33,26 @@ else           : dp[j][i] = dp[j-1][i-1] and s[i] == p[j]
 
 # leetcode: q44 https://leetcode.com/problems/wildcard-matching/description/
 
+
 def isMatch(self, s, p):
     """
     :type s: str
     :type p: str   pattern str including wildcard
     :rtype: bool
     """
-    n,m = len(s),len(p)
-    last =  [False]*(n+1)
+    n, m = len(s), len(p)
+    last = [False]*(n+1)
     last[0] = True
     for j in range(m):
-        if p[j]=='*':
+        if p[j] == '*':
             for i in range(n):
                 last[i+1] = last[i+1] or last[i]
-        elif p[j]=='?':
+        elif p[j] == '?':
             last.pop()
-            last.insert(0,False)
+            last.insert(0, False)
         else:
             li = [False]
             for i in range(n):
-                li.append( last[i] and p[j]==s[i])
+                li.append(last[i] and p[j] == s[i])
             last = li
     return last[-1]

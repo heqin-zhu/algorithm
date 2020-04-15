@@ -17,17 +17,20 @@ from factor import factor
 from collections import Counter
 from functools import reduce
 from operator import mul
+
+
 def phi(n):
-    st  = set(factor(n))
-    return round(reduce(mul,(1-1/p for p in st),n))
+    st = set(factor(n))
+    return round(reduce(mul, (1-1/p for p in st), n))
+
 
 def sigma(n):
     ct = Counter(factor(n))
-    return reduce(mul,(round((p**(ct[p]+1)-1)/(p-1)) for p in ct),1)
+    return reduce(mul, (round((p**(ct[p]+1)-1)/(p-1)) for p in ct), 1)
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     while 1:
         n = int(input('n: '))
-        print('phi(n):',phi(n))
-        print('sigma(n):',sigma(n))
-
+        print('phi(n):', phi(n))
+        print('sigma(n):', sigma(n))

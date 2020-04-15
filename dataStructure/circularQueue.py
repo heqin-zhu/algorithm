@@ -9,6 +9,8 @@
 # Description:
 #########################################################################
 '''
+
+
 class MyCircularQueue:
 
     def __init__(self, k):
@@ -29,8 +31,9 @@ class MyCircularQueue:
         if self.isFull():
             return False
         self.data[self.rear] = value
-        self.rear = (self.rear+1)%self.size
+        self.rear = (self.rear+1) % self.size
         return True
+
     def deQueue(self):
         """
         Delete an element from the circular queue. Return true if the operation is successful.
@@ -38,9 +41,9 @@ class MyCircularQueue:
         """
         if self.isEmpty():
             return False
-        self.head = (self.head+1)%self.size
+        self.head = (self.head+1) % self.size
         return True
-        
+
     def Front(self):
         """
         Get the front item from the queue.
@@ -49,7 +52,6 @@ class MyCircularQueue:
         if self.isEmpty():
             return -1
         return self.data[self.head]
-        
 
     def Rear(self):
         """
@@ -58,23 +60,21 @@ class MyCircularQueue:
         """
         if self.isEmpty():
             return -1
-        return self.data[(self.rear-1)%self.size]
+        return self.data[(self.rear-1) % self.size]
 
     def isEmpty(self):
         """
         Checks whether the circular queue is empty or not.
         :rtype: bool
         """
-        return self.head ==self.rear
-        
+        return self.head == self.rear
 
     def isFull(self):
         """
         Checks whether the circular queue is full or not.
         :rtype: bool
         """
-        return (self.head - self.rear)%self.size ==1
-        
+        return (self.head - self.rear) % self.size == 1
 
 
 # Your MyCircularQueue object will be instantiated and called as such:

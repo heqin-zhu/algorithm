@@ -21,10 +21,13 @@ def isBipartite(self, graph):
     """
     n = len(graph)
     self.node = graph
-    self.color = {i:None for i in range(n)}
-    return all(self.dfs(i,True) for i in range(n) if self.color[i] is None)
-def dfs(self,n,col=True):
+    self.color = {i: None for i in range(n)}
+    return all(self.dfs(i, True) for i in range(n) if self.color[i] is None)
+
+
+def dfs(self, n, col=True):
     if self.color[n] is None:
-        self.color[n]=col
-        return all(self.dfs(i,not col) for i in self.node[n])
-    else:return col==self.color[n]
+        self.color[n] = col
+        return all(self.dfs(i, not col) for i in self.node[n])
+    else:
+        return col == self.color[n]

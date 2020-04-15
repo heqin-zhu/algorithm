@@ -11,21 +11,23 @@
 #######################################################################
 '''
 
-def fastPow(a,n):
+
+def fastPow(a, n):
     '''a^n'''
     rst = 1
     while n:
-        if n%2:
-            rst *=a
-        n>>=1
-        a*=a
+        if n % 2:
+            rst *= a
+        n >>= 1
+        a *= a
     return rst
 
-def fastMul(a,b):
+
+def fastMul(a, b):
     '''a*b'''
     rst = 0
     while b:
-        if b&1:
-            rst +=a
-        b>>=1
-        a*=2
+        if b & 1:
+            rst += a
+        b >>= 1
+        a *= 2

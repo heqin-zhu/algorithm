@@ -27,34 +27,37 @@ When the window is no longer valid, start expanding again using the right pointe
 '''
 
 from collections import defaultdict
+
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        def expand(j,lacked,dic):
-            while j<n and lacked:
+        def expand(j, lacked, dic):
+            while j < n and lacked:
                 if s[j] in lacked:
-                    lacked[s[j]]-=1
-                    if lacked[s[j]]==0:
+                    lacked[s[j]] -= 1
+                    if lacked[s[j]] == 0:
                         del lacked[s[j]]
-                dic[s[j]]+=1
-                j+=1
+                dic[s[j]] += 1
+                j += 1
             return j
-        def contract(left,right):
-            for i in range(left,right):
-                dic[s[i]]-=1
-                if dic[s[i]]==0:
+
+        def contract(left, right):
+            for i in range(left, right):
+                dic[s[i]] -= 1
+                if dic[s[i]] == 0:
                     del dic[s[i]]
-                if s[i] in chars and (s[i] not in dic or dic[s[i]]<chars[s[i]]):
-                    return i+1,{s[i]:1}
-        n ,i, j= len(s),0,0
+                if s[i] in chars and (s[i] not in dic or dic[s[i]] < chars[s[i]]):
+                    return i+1, {s[i]: 1}
+        n, i, j = len(s), 0, 0
         ans = ''
-        dic,lacked = defaultdict(int), defaultdict(int)
+        dic, lacked = defaultdict(int), defaultdict(int)
         for c in t:
-            lacked[c]+=1
+            lacked[c] += 1
         chars = lacked.copy()
-        while j<n and lacked:
-            j = expand(j,lacked,dic)
-            if  not lacked:
-                i,lacked=contract(i,j)
-                if ans=='' or len(ans)>j-i+1:
+        while j < n and lacked:
+            j = expand(j, lacked, dic)
+            if not lacked:
+                i, lacked = contract(i, j)
+                if ans == '' or len(ans) > j-i+1:
                     ans = s[i-1:j]
-        return ans 
+        return ans

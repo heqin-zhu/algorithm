@@ -11,23 +11,28 @@
 #######################################################################
 '''
 
-def gcd(a,b):
-    while b!=0:
-        a,b=b,a%b
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
     return a
 
-def lcm(a,b):
-    return int(a*b/gcd(a,b))
-def xgcd(a,b):
-    '''return gcd(a,b),  x,y  where  ax+by=gcd(a,b)'''
-    if b==0:return a,1,0
-    g,x,y = xgcd(b,a%b)
-    return g,y,x-a//b*y
 
-if __name__=='__main__':
+def lcm(a, b):
+    return int(a*b/gcd(a, b))
+
+
+def xgcd(a, b):
+    '''return gcd(a,b),  x,y  where  ax+by=gcd(a,b)'''
+    if b == 0:
+        return a, 1, 0
+    g, x, y = xgcd(b, a % b)
+    return g, y, x-a//b*y
+
+
+if __name__ == '__main__':
     while 1:
         a = int(input('a: '))
         b = int(input('b: '))
-        print('gcd :',gcd(a,b))
-        print('xgcd:',xgcd(a,b))
-
+        print('gcd :', gcd(a, b))
+        print('xgcd:', xgcd(a, b))

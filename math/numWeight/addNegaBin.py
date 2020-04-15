@@ -23,6 +23,7 @@ eg
 '''
 from nega import nega
 
+
 def addNegaBin(arr1: list, arr2: list) -> list:
     if len(arr1) < len(arr2):
         arr1, arr2 = arr2, arr1
@@ -42,19 +43,20 @@ def addNegaBin(arr1: list, arr2: list) -> list:
 
         elif arr1[i] == 0 and arr2[i] == 1:
             arr1[i] = arr2[i]
-        #print(arr1,arr2,i)
+        # print(arr1,arr2,i)
     while len(arr1) > 1 and arr1[0] == 0:
         arr1.pop(0)
     return arr1
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     while 1:
         print("input q to quit or input x1 x2: ")
         s = input()
-        if s=='q':
+        if s == 'q':
             break
-        n1,n2 =[int(i) for i in  s.split()]
-        l1,l2 = nega(n1),nega(n2)
-        print(n1,l1)
-        print(n2,l2)
+        n1, n2 = [int(i) for i in s.split()]
+        l1, l2 = nega(n1), nega(n2)
+        print(n1, l1)
+        print(n2, l2)
         print(f'{n1}+{n2}={n1+n2}: {addNegaBin(l1,l2)}')

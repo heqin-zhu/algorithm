@@ -13,48 +13,51 @@
 #######################################################################
 '''
 
-def hammingDistance(a,b):
-    if isinstance(a,int):
-        n = a^b
+
+def hammingDistance(a, b):
+    if isinstance(a, int):
+        n = a ^ b
         ct = 0
         while n:
-            ct+=n%2
-            n>>=1
+            ct += n % 2
+            n >>= 1
         return ct
     else:
-        n,m = len(a),len(b)
+        n, m = len(a), len(b)
         ret = 0
-        for i,j in zip(a,b):
-            ret+= i==j
+        for i, j in zip(a, b):
+            ret += i == j
         return ret+abs(n-m)
+
 
 def totalHammingDistance(lst):
     '''return sum of any two items(num or lst( str)) in lst'''
-    length  = len(lst)
-    if length ==0:return 0
-    if isinstance(lst[0],int):
+    length = len(lst)
+    if length == 0:
+        return 0
+    if isinstance(lst[0], int):
         bits = [0] * len(bin(max(lst)))
         for n in lst:
             ct = 0
             while n:
-                if n%2==1:
-                    bits[ct]+=1
-                ct+=1
-                n>>=1
+                if n % 2 == 1:
+                    bits[ct] += 1
+                ct += 1
+                n >>= 1
         return sum(i*(length-i) for i in bits)
     else:
-        mx = len(max(lst,key=len))
+        mx = len(max(lst, key=len))
         position = [dict() for i in range(mx)]
         for li in lst:
-            for i,x in enumerate(li):
+            for i, x in enumerate(li):
                 if x in position[i]:
-                    position[i][x] +=1
+                    position[i][x] += 1
                 else:
-                    position[i][x] =1
+                    position[i][x] = 1
         ret = 0
         for dic in position:
             left = length
             for i in dic.values():
-                ret+=i*(left-i) # key step
-                left -=i        # key step
+                ret += i*(left-i)  # key step
+                left -= i        # key step
         return ret

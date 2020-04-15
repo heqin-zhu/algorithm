@@ -20,36 +20,37 @@
 #######################################################################
 '''
 
+
 class Solution:
     def longestStrChain(self, words: List[str]) -> int:
-        def isAdj(s1,s2):
-            if len(s1)>len(s2):
-                s1,s2 = s2,s1
-            n1,n2 = len(s1),len(s2)
-            if n2-n1!=1:
+        def isAdj(s1, s2):
+            if len(s1) > len(s2):
+                s1, s2 = s2, s1
+            n1, n2 = len(s1), len(s2)
+            if n2-n1 != 1:
                 return False
-            i=j=0
+            i = j = 0
             flag = False
-            while i<n1 and j<n2:
-                if s1[i]!=s2[j]:
+            while i < n1 and j < n2:
+                if s1[i] != s2[j]:
                     if flag:
                         return False
                     flag = True
-                    j+=1
+                    j += 1
                 else:
-                    i+=1
-                    j+=1
+                    i += 1
+                    j += 1
             return True
-                        
+
         def dfs(begin):
             ans = 1
             w = words[begin]
             n = len(w)
             if n+1 in lenDic:
                 for nd in lenDic[n+1]:
-                    #print(w,words[nd],isAdj(w,words[nd]))
-                    if isAdj(w,words[nd]):
-                        ans = max(ans,1+dfs(nd))
+                    # print(w,words[nd],isAdj(w,words[nd]))
+                    if isAdj(w, words[nd]):
+                        ans = max(ans, 1+dfs(nd))
             return ans
         lenDic = {}
         for i in range(len(words)):
@@ -57,14 +58,13 @@ class Solution:
             if n in lenDic:
                 lenDic[n].add(i)
             else:
-                lenDic[n]={i}
-        
+                lenDic[n] = {i}
+
         lens = sorted(lenDic)
         n = len(lens)
         ans = 0
         for i in range(n):
             if ans < n-i:
                 for nd in lenDic[lens[i]]:
-                    ans = max(ans,dfs(nd))          
+                    ans = max(ans, dfs(nd))
         return ans
-                

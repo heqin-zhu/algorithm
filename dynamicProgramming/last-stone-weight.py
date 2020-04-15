@@ -21,12 +21,13 @@ leetcode 1049: https://leetcode-cn.com/problems/last-stone-weight-ii/
 #######################################################################
 '''
 
+
 class Solution:
     def lastStoneWeightII(self, stones: List[int]) -> int:
         sm = sum(stones)
         ans = sm//2
         dp = [0]*(ans+1)
         for x in stones:
-            for j in range(ans,x-1,-1):
-                dp[j] = max(dp[j],dp[j-x]+x)
+            for j in range(ans, x-1, -1):
+                dp[j] = max(dp[j], dp[j-x]+x)
     return sm-2*dp[ans]

@@ -13,41 +13,49 @@
 
 from random import randint
 from isPrime import isPrime
-from gcd     import gcd
+from gcd import gcd
+
 
 def factor(n):
     '''pollard's rho algorithm'''
-    if n<1:raise Exception('[Error]: {} is less than 1'.format(n))
-    if n==1: return []
-    if isPrime(n):return [n]
-    fact=1
-    cycle_size=2
+    if n < 1:
+        raise Exception('[Error]: {} is less than 1'.format(n))
+    if n == 1:
+        return []
+    if isPrime(n):
+        return [n]
+    fact = 1
+    cycle_size = 2
     x = x_fixed = 2
-    c = randint(1,n)
-    while fact==1:
+    c = randint(1, n)
+    while fact == 1:
         for i in range(cycle_size):
-            if fact>1:break
-            x=(x*x+c)%n
-            if x==x_fixed:
-                c = randint(1,n)
+            if fact > 1:
+                break
+            x = (x*x+c) % n
+            if x == x_fixed:
+                c = randint(1, n)
                 continue
-            fact = gcd(x-x_fixed,n)
-        cycle_size *=2
+            fact = gcd(x-x_fixed, n)
+        cycle_size *= 2
         x_fixed = x
     return factor(fact)+factor(n//fact)
+
+
 def fact(n):
-    f=2
+    f = 2
     ret = []
-    while f*f<=n:
-        while not n%f:
+    while f*f <= n:
+        while not n % f:
             ret.append(f)
             n//f
-        f+=1
-    if n>1:ret.append(n)
+        f += 1
+    if n > 1:
+        ret.append(n)
     return ret
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     while 1:
         n = int(input('n: '))
         print(factor(n))

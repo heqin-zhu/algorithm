@@ -17,77 +17,80 @@
 #########################################################################
 '''
 
-def rotate(s,k,right=False):
-    def reverse(a,b):
-        while a<b:
-            s[a],s[b]=s[b],s[a]
-            a+=1
-            b-=1
-    n=len(s)
-    k = k%n if not right else  n-k%n
-    reverse(0,k-1)
-    reverse(k,n-1)
-    reverse(0,n-1)
+
+def rotate(s, k, right=False):
+    def reverse(a, b):
+        while a < b:
+            s[a], s[b] = s[b], s[a]
+            a += 1
+            b -= 1
+    n = len(s)
+    k = k % n if not right else n-k % n
+    reverse(0, k-1)
+    reverse(k, n-1)
+    reverse(0, n-1)
     return s
 
 
-
-def rotate2(s,k,right=False):
-    def swap(a,b,c):
+def rotate2(s, k, right=False):
+    def swap(a, b, c):
         for i in range(c):
-            s[a+i],s[b+i] = s[b+i],s[a+i]
-    def _rot(pl,pr):
+            s[a+i], s[b+i] = s[b+i], s[a+i]
+
+    def _rot(pl, pr):
         ''' swap s[pl,pr) , s[pr:]'''
-        if pr==n:return
-        if pr-pl<=n-pr:
-            swap(pl,pr,pr-pl)
-            _rot(pr,2*pr-pl)
+        if pr == n:
+            return
+        if pr-pl <= n-pr:
+            swap(pl, pr, pr-pl)
+            _rot(pr, 2*pr-pl)
         else:
-            swap(pl,pr,n-pr)
-            _rot(n-pr+pl,pr)
-    n=len(s)
-    k = k%n if not right else  n-k%n
-    _rot(0,k)
+            swap(pl, pr, n-pr)
+            _rot(n-pr+pl, pr)
+    n = len(s)
+    k = k % n if not right else n-k % n
+    _rot(0, k)
     return s
 
 
+def rotate3(s, k, right=False):
+    def gcd(a, b):
+        if b == 0:
+            return a
+        return gcd(b, a % b)
 
-def rotate3(s,k,right=False):
-    def gcd(a,b):
-        if b==0:return a
-        return gcd(b,a%b)
-    
-    n=len(s)
-    k = k%n if not right else  n-k%n
-    r=gcd(n,k)
+    n = len(s)
+    k = k % n if not right else n-k % n
+    r = gcd(n, k)
     for i in range(r):
         tmp = s[i]
-        j = (i+k)%n
-        while j!=i:
+        j = (i+k) % n
+        while j != i:
             s[j-k] = s[j]
-            j = (j+k)%n
-        s[(j-k+n)%n] = tmp
+            j = (j+k) % n
+        s[(j-k+n) % n] = tmp
     return s
 
 
 def test():
-    def f(func,*args,right=False):
-        print(' '.join(['testing:',func.__name__,str(args),'right=',str(right)]))
-        rst = func(*args,right=right)
-        print('result',rst)
+    def f(func, *args, right=False):
+        print(' '.join(['testing:', func.__name__,
+                        str(args), 'right=', str(right)]))
+        rst = func(*args, right=right)
+        print('result', rst)
         print()
     return f
 
 
-if __name__=='__main__':
-    s=[i for i in range(10)]
-    tester= test()
-    tester(rotate,s,4,right=True)
-    tester(rotate,s,4)
-    tester(rotate2,s,2,right=True)
-    tester(rotate2,s,2)
-    tester(rotate3,s,132,right=True)
-    tester(rotate3,s,132)
+if __name__ == '__main__':
+    s = [i for i in range(10)]
+    tester = test()
+    tester(rotate, s, 4, right=True)
+    tester(rotate, s, 4)
+    tester(rotate2, s, 2, right=True)
+    tester(rotate2, s, 2)
+    tester(rotate3, s, 132, right=True)
+    tester(rotate3, s, 132)
 
 
 '''

@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 ''' mbinary
 #######################################################################
 # File : stoneGame.py
@@ -14,6 +14,8 @@
     leetcode-cn 877: https://leetcode-cn.com/problems/stone-game/
 #######################################################################
 '''
+
+
 def stoneGame(li):
     '''li: list, len(li)%2==0, sum(li)%2==1'''
    def f(p,q):
@@ -29,7 +31,7 @@ def stoneGame(li):
                n2 = li[q] + min(-li[p]+f(p+1,q-1),-li[q-1]+f(p,q-2))
                ret =  max(n1,n2)
            dp[p][q] = ret
-       #print(li[p:q+1],ret)
+       # print(li[p:q+1],ret)
        return ret
    n = len(li)
    dp = [[None for i in range(n)] for i in range(n)]

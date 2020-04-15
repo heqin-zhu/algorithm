@@ -13,11 +13,12 @@
 #######################################################################
 '''
 
+
 class RandomizedCollection:
     def __init__(self):
 
-        self.vals=[]
-        self.index={}
+        self.vals = []
+        self.index = {}
 
     def insert(self, val: int) -> bool:
         self.vals.append(val)
@@ -27,32 +28,35 @@ class RandomizedCollection:
         else:
             self.index[val] = {len(self.vals)-1}
             return True
+
     def removeAll(self, val: int) -> bool:
         if val not in self.index:
             return False
         begin = end = len(self.vals)-len(self.index[val])
-        for idx in  self.index.pop(val):
-            if idx<begin:
-                while self.vals[end]==val:
-                    end+=1
-                self.vals[idx]=self.vals[end]
+        for idx in self.index.pop(val):
+            if idx < begin:
+                while self.vals[end] == val:
+                    end += 1
+                self.vals[idx] = self.vals[end]
                 self.index[self.vals[idx]].remove(end)
                 self.index[self.vals[idx]].add(idx)
         self.vals = self.vals[:begin]
         return True
-    def remove(self,val):
+
+    def remove(self, val):
         if val not in self.index:
             return False
         last = len(self.vals)-1
         idx = self.index[val].pop()
-        if len(self.index[val])==0:
+        if len(self.index[val]) == 0:
             del self.index[val]
-        if idx!=last:
+        if idx != last:
             self.vals[idx] = self.vals[last]
             self.index[self.vals[idx]].remove(last)
             self.index[self.vals[idx]].add(idx)
         self.vals.pop()
         return True
+
     def getRandom(self) -> int:
         if self.vals:
-            return self.vals[random.randint(0,len(self.vals)-1)]
+            return self.vals[random.randint(0, len(self.vals)-1)]

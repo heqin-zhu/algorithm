@@ -9,17 +9,21 @@
 # Description:
 #########################################################################
 '''
+
+
 class node:
-    def __init__(self,val,follow=None):
+    def __init__(self, val, follow=None):
         self.val = val
         self.follow = follow
+
+
 class MyLinkedList:
 
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        
+
         self.tail = self.head = node(None)
 
     def get(self, index):
@@ -31,7 +35,8 @@ class MyLinkedList:
         nd = self.head
         for i in range(index+1):
             nd = nd.follow
-            if nd is None:return -1
+            if nd is None:
+                return -1
         return nd.val
 
     def addAtHead(self, val):
@@ -40,9 +45,11 @@ class MyLinkedList:
         :type val: int
         :rtype: void
         """
-        nd = node(val,self.head.follow)
+        nd = node(val, self.head.follow)
         self.head .follow = nd
-        if self.tail.val is None:self.tail = nd
+        if self.tail.val is None:
+            self.tail = nd
+
     def addAtTail(self, val):
         """
         Append a node of value val to the last element of the linked list.
@@ -51,7 +58,6 @@ class MyLinkedList:
         """
         self.tail.follow = node(val)
         self.tail = self.tail.follow
-        
 
     def addAtIndex(self, index, val):
         """
@@ -65,11 +71,10 @@ class MyLinkedList:
             nd = nd.follow
             if nd is None:
                 return
-        new = node(val,nd.follow)
+        new = node(val, nd.follow)
         nd.follow = new
         if self.tail == nd:
             self.tail = new
-                
 
     def deleteAtIndex(self, index):
         """
@@ -80,10 +85,12 @@ class MyLinkedList:
         nd = self.head
         for i in range(index):
             nd = nd.follow
-            if nd is None:return
-        if self.tail == nd.follow:self.tail = nd            
-        if nd.follow:nd.follow = nd.follow.follow
-        
+            if nd is None:
+                return
+        if self.tail == nd.follow:
+            self.tail = nd
+        if nd.follow:
+            nd.follow = nd.follow.follow
 
 
 # Your MyLinkedList object will be instantiated and called as such:
