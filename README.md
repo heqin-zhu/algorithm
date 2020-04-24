@@ -11,7 +11,8 @@
 
 Some pictures and ideas are from `<<Introduction to Algotithm>>`
 
-[Click here](./docs) to view notes
+[Here](https://mbinary.github.io/algorithm) is the notes in Chinese.
+
 # Index
 * [.](.)
     * [LICENSE](./LICENSE)
@@ -81,7 +82,6 @@ Some pictures and ideas are from `<<Introduction to Algotithm>>`
         * [PL0-compiler](./parser/PL0-compiler)
         * [calculator](./parser/calculator)
         * [declarationParser](./parser/declarationParser)
-    * [poly.c](./poly.c)
     * [search](./search)
         * [Astar.py](./search/Astar.py)
         * [BFS_knight.hs](./search/BFS_knight.hs)
