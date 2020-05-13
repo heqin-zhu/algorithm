@@ -9,13 +9,25 @@
 [![codebeat badge](https://codebeat.co/badges/d52dd17d-a437-4dee-a6ec-cb532e8135bd)](https://codebeat.co/projects/github-com-mbinary-algorithm-master)
 >Notes and codes for learning algorithm and data structures :smiley:
 
-Some pictures and ideas are from `<<Introduction to Algotithm>>`
 
-[Click here](./docs) to view notes
-# Index
+
+## Notes
+>Notes were written in Chinese. Some pictures and ideas are from `Introduction to Algorithm`
+
+* docs
+  * [algorithm-general.md](./docs/algorithm-general.md)
+  * [b-tree.md](./docs/b-tree.md)
+  * [dft.md](./docs/dft.md)
+  * [fib-heap.md](./docs/fib-heap.md)
+  * [graph.md](./docs/graph.md)
+  * [hashTable.md](./docs/hashTable.md)
+  * [red-black-tree.md](./docs/red-black-tree.md)
+  * [sort.md](./docs/sort.md)
+  * [string-matching.md](./docs/string-matching.md)
+  * [tree.md](./docs/tree.md)
+  
+## Codes
 * [.](.)
-    * [LICENSE](./LICENSE)
-    * [README.md](./README.md)
     * [dataStructure](./dataStructure)
         * [LRU](./dataStructure/LRU)
         * [bTree.py](./dataStructure/bTree.py)
@@ -40,20 +52,6 @@ Some pictures and ideas are from `<<Introduction to Algotithm>>`
         * [winnerTree.py](./dataStructure/winnerTree.py)
     * [divideAndConquer](./divideAndConquer)
         * [min_distance_of_n_points.py](./divideAndConquer/min_distance_of_n_points.py)
-    * [docs](./docs)
-        * [README.md](./docs/README.md)
-        * [_config.yml](./docs/_config.yml)
-        * [algorithm-general.md](./docs/algorithm-general.md)
-        * [b-tree.md](./docs/b-tree.md)
-        * [dft.md](./docs/dft.md)
-        * [fib-heap.md](./docs/fib-heap.md)
-        * [graph.md](./docs/graph.md)
-        * [hashTable.md](./docs/hashTable.md)
-        * [red-black-tree.md](./docs/red-black-tree.md)
-        * [sort.md](./docs/sort.md)
-        * [src](./docs/src)
-        * [string-matching.md](./docs/string-matching.md)
-        * [tree.md](./docs/tree.md)
     * [dynamicProgramming](./dynamicProgramming)
         * [Vec2d.hs](./dynamicProgramming/Vec2d.hs)
         * [last-stone-weight.py](./dynamicProgramming/last-stone-weight.py)
@@ -81,7 +79,6 @@ Some pictures and ideas are from `<<Introduction to Algotithm>>`
         * [PL0-compiler](./parser/PL0-compiler)
         * [calculator](./parser/calculator)
         * [declarationParser](./parser/declarationParser)
-    * [poly.c](./poly.c)
     * [search](./search)
         * [Astar.py](./search/Astar.py)
         * [BFS_knight.hs](./search/BFS_knight.hs)
@@ -108,9 +105,3 @@ Some pictures and ideas are from `<<Introduction to Algotithm>>`
         * [src](./string/src)
         * [sunday.py](./string/sunday.py)
         * [wildcard_matching.py](./string/wildcard_matching.py)
-    * [utils](./utils)
-        * [codecogs.py](./utils/codecogs.py)
-        * [config.py](./utils/config.py)
-        * [genReadme.py](./utils/genReadme.py)
-        * [headinfo.py](./utils/headinfo.py)
-        * [tree.py](./utils/tree.py)
