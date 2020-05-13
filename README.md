@@ -12,7 +12,7 @@
 
 
 ## Notes
->Notes were written in Chinese. Some pictures and ideas are from `Introduction to Algotithm`
+>Notes were written in Chinese. Some pictures and ideas are from `Introduction to Algorithm`
 
 * docs
   * [algorithm-general.md](./docs/algorithm-general.md)
@@ -28,8 +28,6 @@
   
 ## Codes
 * [.](.)
-    * [LICENSE](./LICENSE)
-    * [README.md](./README.md)
     * [dataStructure](./dataStructure)
         * [LRU](./dataStructure/LRU)
         * [bTree.py](./dataStructure/bTree.py)
@@ -107,9 +105,3 @@
         * [src](./string/src)
         * [sunday.py](./string/sunday.py)
         * [wildcard_matching.py](./string/wildcard_matching.py)
-    * [utils](./utils)
-        * [codecogs.py](./utils/codecogs.py)
-        * [config.py](./utils/config.py)
-        * [genReadme.py](./utils/genReadme.py)
-        * [headinfo.py](./utils/headinfo.py)
-        * [tree.py](./utils/tree.py)
