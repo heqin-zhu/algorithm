@@ -3,10 +3,8 @@
 
 [![Stars](https://img.shields.io/github/stars/mbinary/algorithm.svg?label=Stars&style=social)](https://github.com/mbinary/algorithm/stargazers)
 [![Forks](https://img.shields.io/github/forks/mbinary/algorithm.svg?label=Fork&style=social)](https://github.com/mbinary/algorithm/network/members)
-[![repo-size](https://img.shields.io/github/repo-size/mbinary/algorithm.svg)]()
 [![License](https://img.shields.io/badge/LICENSE-WTFPL-blue.svg)](LICENSE)
 [![Language](https://img.shields.io/badge/language-python3-orange.svg)]()
-[![codebeat badge](https://codebeat.co/badges/d52dd17d-a437-4dee-a6ec-cb532e8135bd)](https://codebeat.co/projects/github-com-mbinary-algorithm-master)
 >Notes and codes for learning algorithm and data structures :smiley:
 
 
